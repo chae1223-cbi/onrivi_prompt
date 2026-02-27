@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Sparkles, Heart, ArrowRight, Zap, Target, Cpu, Workflow, UserCheck, Languages } from 'lucide-react';
+import { Sparkles, Heart, ArrowRight, Zap, Target, Cpu, Workflow, UserCheck, Languages, Copy, Check } from 'lucide-react';
 
 const OnriviLogo = ({ className = "w-8 h-8" }: { className?: string }) => (
   <div className={`${className} bg-blue-600 rounded-[1.25rem] flex items-center justify-center shadow-lg shadow-blue-500/20 overflow-hidden relative`}>
@@ -52,6 +52,7 @@ export default function App() {
             <a href="#hero" className="hover:text-blue-600 transition-colors">{t('nav.intro')}</a>
             <a href="#features" className="hover:text-blue-600 transition-colors">{t('nav.features')}</a>
             <a href="#pricing" className="hover:text-blue-600 transition-colors">{t('nav.pricing')}</a>
+            <a href="#roadmap" className="hover:text-blue-600 transition-colors">{t('nav.roadmap')}</a>
             <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">{t('nav.support')}</a>
           </div>
 
@@ -87,6 +88,9 @@ export default function App() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex justify-center gap-4">
             <a href="#pricing" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/25">
               {t('hero.ctaStart')}
+            </a>
+            <a href="#demo" className="px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
+              {t('hero.ctaGuide')}
             </a>
           </motion.div>
         </section>
@@ -145,10 +149,46 @@ export default function App() {
                   >
                     <div className="prose prose-slate prose-sm md:prose-base max-w-none 
                       prose-headings:font-bold prose-headings:tracking-tighter prose-headings:text-slate-900
-                      prose-p:leading-relaxed prose-pre:bg-slate-900 prose-pre:text-blue-400 prose-pre:rounded-2xl
+                      prose-p:leading-relaxed prose-pre:p-0 prose-pre:bg-transparent
                       prose-strong:text-blue-600 prose-strong:font-bold prose-li:marker:text-blue-500
                     ">
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          pre: ({ children }) => <pre className="bg-slate-900 rounded-2xl overflow-hidden my-6 relative group">{children}</pre>,
+                          code: ({ node, inline, className, children, ...props }: any) => {
+                            const match = /language-(\w+)/.exec(className || '');
+                            const codeContent = String(children).replace(/\n$/, '');
+                            const [isCopied, setIsCopied] = useState(false);
+
+                            const copyToClipboard = () => {
+                              navigator.clipboard.writeText(codeContent);
+                              setIsCopied(true);
+                              setTimeout(() => setIsCopied(false), 2000);
+                            };
+
+                            if (!inline && match) {
+                              return (
+                                <div className="relative">
+                                  <div className="absolute right-3 top-3 z-10">
+                                    <button
+                                      onClick={copyToClipboard}
+                                      className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white/50 hover:text-white transition-all backdrop-blur-sm border border-white/5"
+                                      title="Copy code"
+                                    >
+                                      {isCopied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+                                    </button>
+                                  </div>
+                                  <code className={`${className} block p-6 pt-12 overflow-x-auto text-blue-400 font-mono text-sm leading-relaxed`} {...props}>
+                                    {children}
+                                  </code>
+                                </div>
+                              );
+                            }
+                            return <code className={`${className} bg-slate-100 text-blue-600 px-1.5 py-0.5 rounded-md font-bold`} {...props}>{children}</code>;
+                          }
+                        }}
+                      >
                         {t('chat.aiResponse')}
                       </ReactMarkdown>
                     </div>
@@ -237,12 +277,29 @@ export default function App() {
           </div>
         </section>
 
+        {/* Roadmap */}
+        <section id="roadmap" className="bg-slate-900 text-white py-32 overflow-hidden relative">
+          <div className="absolute inset-0 bg-blue-600/5 z-0" />
+          <div className="max-w-5xl mx-auto px-8 relative z-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-center tracking-tighter mb-20">{t('roadmap.title')}</h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[1, 2, 3].map((step) => (
+                <div key={step} className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors group">
+                  <div className="text-blue-400 font-black text-4xl mb-6 opacity-30 group-hover:opacity-100 transition-opacity">0{step}</div>
+                  <p className="text-lg font-bold leading-tight">{t(`roadmap.step${step}`)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Closing */}
         <section className="max-w-3xl mx-auto px-8 py-40 text-center">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-12">
             {t('closing.content')}
           </h2>
-          <a href="mailto:firstonrivi@onrivi.com" className="inline-block px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
+          <a href="#demo" className="inline-block px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
             {t('hero.ctaGuide')}
           </a>
         </section>

@@ -6,12 +6,13 @@ const resources = {
   en: {
     translation: {
       brand: "OnriviPrompt",
-      company: "onrivi",
+      company: "onrivi prompt",
       slogan: "Your Ultimate AI Prompt Management Assistant",
       nav: {
         intro: "Intro",
         features: "Features",
         pricing: "Pricing",
+        roadmap: "Roadmap",
         support: "Support",
       },
       hero: {
@@ -64,6 +65,12 @@ const resources = {
           btn: "Buy License"
         }
       },
+      roadmap: {
+        title: "Future Roadmap",
+        step1: "Build Brand Identity & Landing Page",
+        step2: "Meet Global Deployment Requirements",
+        step3: "Integrate Payment & License Systems (WIP)"
+      },
       closing: {
         title: "Ready to optimize?",
         content: "Stop copy-pasting. Start generating with OnriviPrompt."
@@ -84,19 +91,20 @@ const resources = {
   ko: {
     translation: {
       brand: "OnriviPrompt",
-      company: "onrivi",
+      company: "onrivi prompt",
       slogan: "나만의 완벽한 AI 프롬프트 관리 비서",
       nav: {
         intro: "소개",
         features: "기능",
         pricing: "요금 안내",
+        roadmap: "로드맵",
         support: "고객 지원",
       },
       hero: {
         badge: "Smart Prompt Organizer",
-        title: "더 이상 프롬프트를",
-        titleAccent: "잃어버리지 마세요",
-        description: "OnriviPrompt는 비개발자 실무자를 위한 데스크톱 전용 앱입니다. 좌측에서 폴더를 관리하고 우측에서 구글 제미나이(Gemini)와 대화하며 이미지를 생성하는 듀얼패널의 혁신을 경험하세요.",
+        title: "더 이상 당신의",
+        titleAccent: "프롬프트를",
+        description: "잃어버리지 마세요. OnriviPrompt는 비개발자 실무자를 위한 데스크톱 전용 앱입니다. 좌측에서 폴더를 관리하고 우측에서 구글 제미나이(Gemini)와 대화하며 이미지를 생성하는 혁신을 경험하세요.",
         ctaStart: "체험판 다운로드",
         ctaGuide: "데모 보기",
       },
@@ -141,6 +149,12 @@ const resources = {
           f4: "우선 고객 지원 (firstonrivi@onrivi.com)",
           btn: "라이선스 구매하기"
         }
+      },
+      roadmap: {
+        title: "Future Roadmap",
+        step1: "브랜드 정체성 및 랜딩 페이지 구축",
+        step2: "글로벌 배포 필수 요건 충족",
+        step3: "결제 및 라이선스 시스템 연동 (예정)"
       },
       closing: {
         title: "Ready to optimize?",
