@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
     LayoutDashboard,
@@ -15,11 +15,12 @@ import {
     ShieldAlert,
     Download,
     Copy,
-    Check
+    Check,
+    Loader2
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
-// Mock Data
+// Mock Data for Dashboard Stats
 const stats = [
     { label: 'Total Revenue', value: '$12,450', change: '+12.5%', icon: <CreditCard className="w-5 h-5" /> },
     { label: 'Active Licenses', value: '428', change: '+18.2%', icon: <Key className="w-5 h-5" /> },
@@ -27,16 +28,65 @@ const stats = [
     { label: 'Pending Support', value: '12', change: '-2', icon: <Bell className="w-5 h-5" /> },
 ];
 
-const licenses = [
-    { id: '1', email: 'user1@example.com', key: 'ONRIVI-XXXX-1234', status: 'Active', date: '2026-02-25' },
-    { id: '2', email: 'user2@test.net', key: 'ONRIVI-YYYY-5678', status: 'Active', date: '2026-02-26' },
-    { id: '3', email: 'badactor@spam.com', key: 'ONRIVI-ZZZZ-9012', status: 'Revoked', date: '2026-02-20' },
-    { id: '4', email: 'client3@corp.com', key: 'ONRIVI-AAAA-3333', status: 'Active', date: '2026-02-27' },
-];
+interface License {
+    id: number;
+    customer_email: string;
+    license_key: string;
+    plan_type: string;
+    status: string;
+    issued_at: string;
+}
 
 export default function Admin() {
     const [activeTab, setActiveTab] = useState('dashboard');
     const [copiedId, setCopiedId] = useState<string | null>(null);
+    const [licenses, setLicenses] = useState<License[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isGenerating, setIsGenerating] = useState(false);
+
+    // Fetch Licenses
+    const fetchLicenses = async () => {
+        setIsLoading(true);
+        try {
+            const res = await fetch('/api/admin/licenses');
+            if (res.ok) {
+                const data = await res.json() as License[];
+                setLicenses(data);
+            }
+        } catch (error) {
+            console.error('Failed to fetch licenses:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        if (activeTab === 'licenses') {
+            fetchLicenses();
+        }
+    }, [activeTab]);
+
+    const handleGenerateKey = async () => {
+        const email = prompt('Enter customer email for new license:');
+        if (!email) return;
+
+        setIsGenerating(true);
+        try {
+            const res = await fetch('/api/admin/licenses', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, plan: 'Pro' })
+            });
+            if (res.ok) {
+                alert('New license key generated successfully!');
+                fetchLicenses();
+            }
+        } catch (error) {
+            alert('Failed to generate license key.');
+        } finally {
+            setIsGenerating(false);
+        }
+    };
 
     const handleCopy = (text: string, id: string) => {
         navigator.clipboard.writeText(text);
@@ -192,61 +242,85 @@ export default function Admin() {
                                 <p className="text-sm text-slate-400 font-medium">Issue, track and revoke client licenses.</p>
                             </div>
                             <div className="flex gap-3">
-                                <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors">
-                                    <Download className="w-4 h-4" /> Export CSV
+                                <button
+                                    onClick={fetchLicenses}
+                                    className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors"
+                                >
+                                    <TrendingUp className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} /> Refresh
                                 </button>
-                                <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20">
+                                <button
+                                    onClick={handleGenerateKey}
+                                    disabled={isGenerating}
+                                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20 disabled:opacity-50"
+                                >
+                                    {isGenerating ? <Loader2 className="w-4 h-4 animate-spin" /> : <UserPlus className="w-4 h-4" />}
                                     Generate New Key
                                 </button>
                             </div>
                         </div>
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse border border-slate-200">
-                                <thead className="bg-slate-100 text-[10px] font-bold uppercase tracking-widest text-slate-600 border-b border-slate-200">
-                                    <tr>
-                                        <th className="px-8 py-4 border-r border-slate-200">Customer Email</th>
-                                        <th className="px-8 py-4 border-r border-slate-200">License Key</th>
-                                        <th className="px-8 py-4 border-r border-slate-200">Status</th>
-                                        <th className="px-8 py-4 border-r border-slate-200">Issue Date</th>
-                                        <th className="px-8 py-4 text-right">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-slate-200">
-                                    {licenses.map((item) => (
-                                        <tr key={item.id} className="hover:bg-blue-50/50 transition-colors group">
-                                            <td className="px-8 py-4 border-r border-slate-200">
-                                                <span className="text-sm font-bold text-slate-700">{item.email}</span>
-                                            </td>
-                                            <td className="px-8 py-4 border-r border-slate-200 text-slate-500 font-mono text-xs">
-                                                <div className="flex items-center justify-between gap-2">
-                                                    <span>{item.key}</span>
-                                                    <button
-                                                        onClick={() => handleCopy(item.key, item.id)}
-                                                        className="p-1 hover:bg-slate-100 rounded transition-colors text-slate-300 hover:text-blue-600"
-                                                        title="Copy Key"
-                                                    >
-                                                        {copiedId === item.id ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td className="px-8 py-4 border-r border-slate-200">
-                                                <span className={`text-[10px] font-extrabold px-2 py-1 rounded-full ring-1 ${item.status === 'Active'
-                                                    ? 'bg-green-50 text-green-700 ring-green-200'
-                                                    : 'bg-red-50 text-red-700 ring-red-200'
-                                                    }`}>
-                                                    {item.status}
-                                                </span>
-                                            </td>
-                                            <td className="px-8 py-4 text-sm text-slate-500 font-medium border-r border-slate-200">{item.date}</td>
-                                            <td className="px-8 py-4 text-right">
-                                                <button className="text-xs font-bold text-blue-600 hover:underline transition-colors opacity-0 group-hover:opacity-100">
-                                                    Manage
-                                                </button>
-                                            </td>
+                        <div className="overflow-x-auto min-h-[400px]">
+                            {isLoading ? (
+                                <div className="flex items-center justify-center h-64">
+                                    <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+                                </div>
+                            ) : (
+                                <table className="w-full text-left border-collapse border border-slate-200">
+                                    <thead className="bg-slate-100 text-[10px] font-bold uppercase tracking-widest text-slate-600 border-b border-slate-200">
+                                        <tr>
+                                            <th className="px-8 py-4 border-r border-slate-200">Customer Email</th>
+                                            <th className="px-8 py-4 border-r border-slate-200">License Key</th>
+                                            <th className="px-8 py-4 border-r border-slate-200">Status</th>
+                                            <th className="px-8 py-4 border-r border-slate-200">Issue Date</th>
+                                            <th className="px-8 py-4 text-right">Actions</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-200">
+                                        {licenses.length === 0 ? (
+                                            <tr>
+                                                <td colSpan={5} className="px-8 py-10 text-center text-slate-400 font-medium">
+                                                    No licenses found. Generate one to get started.
+                                                </td>
+                                            </tr>
+                                        ) : (
+                                            licenses.map((item) => (
+                                                <tr key={item.id} className="hover:bg-blue-50/50 transition-colors group">
+                                                    <td className="px-8 py-4 border-r border-slate-200">
+                                                        <span className="text-sm font-bold text-slate-700">{item.customer_email}</span>
+                                                    </td>
+                                                    <td className="px-8 py-4 border-r border-slate-200 text-slate-500 font-mono text-xs">
+                                                        <div className="flex items-center justify-between gap-2">
+                                                            <span>{item.license_key}</span>
+                                                            <button
+                                                                onClick={() => handleCopy(item.license_key, String(item.id))}
+                                                                className="p-1 hover:bg-slate-100 rounded transition-colors text-slate-300 hover:text-blue-600"
+                                                                title="Copy Key"
+                                                            >
+                                                                {copiedId === String(item.id) ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-8 py-4 border-r border-slate-200">
+                                                        <span className={`text-[10px] font-extrabold px-2 py-1 rounded-full ring-1 ${item.status === 'active'
+                                                            ? 'bg-green-50 text-green-700 ring-green-200'
+                                                            : 'bg-red-50 text-red-700 ring-red-200'
+                                                            }`}>
+                                                            {item.status}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-8 py-4 text-sm text-slate-500 font-medium border-r border-slate-200">
+                                                        {new Date(item.issued_at).toLocaleDateString()}
+                                                    </td>
+                                                    <td className="px-8 py-4 text-right">
+                                                        <button className="text-xs font-bold text-blue-600 hover:underline transition-colors opacity-0 group-hover:opacity-100">
+                                                            Manage
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )}
+                                    </tbody>
+                                </table>
+                            )}
                         </div>
                     </motion.div>
                 )}
