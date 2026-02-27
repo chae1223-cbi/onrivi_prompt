@@ -168,6 +168,7 @@ export default function App() {
             <span>{t('company')}</span>
           </div>
           <div className="flex gap-8">
+            <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">firstonrivi@onrivi.com</a>
             <a href="#" className="hover:text-slate-900">{t('footer.terms')}</a>
             <a href="#" className="hover:text-slate-900">{t('footer.privacy')}</a>
           </div>
