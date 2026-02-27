@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Sparkles, Heart, ArrowRight, Zap, Target, Cpu, Workflow, UserCheck, Languages } from 'lucide-react';
 
 const OnriviLogo = ({ className = "w-8 h-8" }: { className?: string }) => (
@@ -105,6 +107,56 @@ export default function App() {
               <p className="text-slate-400 font-medium">OnriviPrompt DualPanel Interface Preview</p>
             </div>
           </motion.div>
+        </section>
+
+        {/* AI Chat Demo with Markdown */}
+        <section id="demo" className="py-32 bg-white">
+          <div className="max-w-5xl mx-auto px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">{t('chat.title')}</h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto bg-slate-50 rounded-[3rem] p-6 md:p-12 shadow-inner border border-slate-100">
+              <div className="space-y-8">
+                {/* User Message */}
+                <div className="flex justify-end gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="bg-blue-600 text-white px-7 py-5 rounded-[2.5rem] rounded-tr-sm shadow-xl shadow-blue-500/10 max-w-[80%] text-sm md:text-base font-medium leading-relaxed"
+                  >
+                    {t('chat.userQuery')}
+                  </motion.div>
+                  <div className="w-12 h-12 bg-white border border-slate-200 rounded-full flex-shrink-0 flex items-center justify-center font-black text-slate-300 shadow-sm">U</div>
+                </div>
+
+                {/* AI Message */}
+                <div className="flex justify-start gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-[1rem] flex-shrink-0 flex items-center justify-center overflow-hidden shadow-lg shadow-blue-500/20">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="bg-white border border-slate-200 px-8 py-8 rounded-[2.5rem] rounded-tl-sm shadow-sm max-w-[90%] text-slate-700"
+                  >
+                    <div className="prose prose-slate prose-sm md:prose-base max-w-none 
+                      prose-headings:font-bold prose-headings:tracking-tighter prose-headings:text-slate-900
+                      prose-p:leading-relaxed prose-pre:bg-slate-900 prose-pre:text-blue-400 prose-pre:rounded-2xl
+                      prose-strong:text-blue-600 prose-strong:font-bold prose-li:marker:text-blue-500
+                    ">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {t('chat.aiResponse')}
+                      </ReactMarkdown>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Features (Key Features of OnriviPrompt) */}

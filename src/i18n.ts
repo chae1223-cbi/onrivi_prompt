@@ -73,6 +73,11 @@ const resources = {
         privacy: "Privacy Policy",
         contact: "Contact",
         copy: "© 2026 onrivi."
+      },
+      chat: {
+        title: "AI Chat Demo",
+        userQuery: "Can you help me refine this sales email prompt?",
+        aiResponse: "Certainly! Here is a refined version of your sales email prompt using **Markdown** formatting:\n\n### 📧 Refined Sales Email Prompt\n- **Tone**: Professional yet approachable\n- **Target**: B2B Decision Makers\n\n```markdown\nSubject: Quick question about [Company Name]'s [Goal]\n\nHi [Name],\n\nI noticed you're working on [Relevant Topic]. Our solution helps [Benefit]...\n```\n\nYou can apply this to your editor with one click!"
       }
     }
   },
@@ -146,6 +151,11 @@ const resources = {
         privacy: "개인정보처리방침",
         contact: "문의하기",
         copy: "© 2026 onrivi."
+      },
+      chat: {
+        title: "AI 채팅 데모",
+        userQuery: "마케팅용 인스타그램 캡션 프롬프트 좀 다듬어줘.",
+        aiResponse: "네, 물론이죠! **마크다운** 형식을 사용하여 더 매력적인 인스타그램 캡션 프롬프트를 작성해 보았습니다:\n\n### 📸 인스타그램 캡션 프롬프트\n- **톤앤매너**: 트렌디하고 친근한 느낌\n- **핵심 요소**: 이모지 활용, 해시태그 포함\n\n```markdown\n[컨셉]: 20대 타겟의 미니멀 감성 카페\n[내용]: 무채색 인테리어와 핸드드립 커피의 조화...\n\n#카페추천 #감성카페 #성수동맛집\n```\n\n클릭 한 번으로 에디터에 바로 적용할 수 있습니다!"
       }
     }
   }
