@@ -258,7 +258,10 @@ export default function App() {
             <Link to="/terms" className="hover:text-slate-900 transition-colors">{t('footer.terms')}</Link>
             <Link to="/privacy" className="hover:text-slate-900 transition-colors">{t('footer.privacy')}</Link>
           </div>
-          <div>{t('footer.copy')}</div>
+          <div className="flex items-center gap-2">
+            <span>{t('footer.copy')}</span>
+            <Link to="/admin" className="opacity-0 hover:opacity-10 pointer-events-auto cursor-default text-[8px] transition-opacity">admin</Link>
+          </div>
         </footer>
       </main>
     </div>
