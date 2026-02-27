@@ -156,7 +156,7 @@ export default function App() {
                         remarkPlugins={[remarkGfm]}
                         components={{
                           pre: ({ children }) => <pre className="bg-slate-900 rounded-2xl overflow-hidden my-6 relative group">{children}</pre>,
-                          code: ({ node, inline, className, children, ...props }: any) => {
+                          code: ({ inline, className, children, ...props }: any) => {
                             const match = /language-(\w+)/.exec(className || '');
                             const codeContent = String(children).replace(/\n$/, '');
                             const [isCopied, setIsCopied] = useState(false);
