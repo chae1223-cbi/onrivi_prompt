@@ -81,9 +81,9 @@ export default function App() {
             {t('hero.description')}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex justify-center gap-4">
-            <button className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/25">
+            <a href="#pricing" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/25">
               {t('hero.ctaStart')}
-            </button>
+            </a>
           </motion.div>
         </section>
 
@@ -188,9 +188,9 @@ export default function App() {
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-12">
             {t('closing.content')}
           </h2>
-          <button className="px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
+          <a href="mailto:firstonrivi@onrivi.com" className="inline-block px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
             {t('hero.ctaGuide')}
-          </button>
+          </a>
         </section>
 
         {/* Footer */}
