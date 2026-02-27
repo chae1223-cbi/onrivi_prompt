@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Sparkles, Heart, ArrowRight, Zap, Target, Cpu, Workflow, UserCheck, Languages } from 'lucide-react';
 
-const OnriviLogo = ({ className = "w-10 h-10" }: { className?: string }) => (
-  <div className={`${className} bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 overflow-hidden relative`}>
-    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-    <svg viewBox="0 0 24 24" className="w-6 h-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+const OnriviLogo = ({ className = "w-8 h-8" }: { className?: string }) => (
+  <div className={`${className} bg-blue-600 rounded-[1.25rem] flex items-center justify-center shadow-lg shadow-blue-500/20 overflow-hidden relative`}>
+    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white fill-none stroke-current stroke-2" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="9" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
     </svg>
   </div>
 );
@@ -40,7 +42,7 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-md">
         <div className="flex items-center gap-3">
           <OnriviLogo className="w-8 h-8" />
-          <span className="text-lg font-bold tracking-tight">{t('company')}</span>
+          <span className="text-xl font-extrabold tracking-tighter lowercase">{t('company')}</span>
         </div>
 
         <div className="flex items-center gap-6">
