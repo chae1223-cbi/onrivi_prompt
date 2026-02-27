@@ -5,69 +5,72 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   en: {
     translation: {
-      brand: "Onrivi Prompt",
+      brand: "OnriviPrompt",
       company: "onrivi",
-      slogan: "Future Tech, Daily Life",
+      slogan: "Your Ultimate AI Prompt Management Assistant",
       nav: {
-        intro: "Identity",
-        mission: "Mission",
-        values: "Values",
-        tech: "Tech",
-        try: "Start"
+        intro: "Intro",
+        features: "Features",
+        pricing: "Pricing",
+        support: "Support",
       },
       hero: {
-        badge: "Operating New Reality",
-        title: "Connect Future,",
-        titleAccent: "Operate Today",
-        description: "onrivi redefines reality through intelligent interfaces. We turn future potential into daily enrichment.",
-        ctaStart: "Get Started",
-        ctaGuide: "Profile"
+        badge: "Smart Prompt Organizer",
+        title: "Stop Losing",
+        titleAccent: "Your Prompts",
+        description: "OnriviPrompt is a desktop app designed for non-developers. Manage your folders, chat with Google Gemini AI, and generate high-quality images all in one unified DualPanel interface.",
+        ctaStart: "Download Trial",
+        ctaGuide: "View Demo",
       },
-      identity: {
-        title: "Identity",
-        content: "onrivi (Intelligent Visionary Interface) redefines reality. We remove complexity to provide intuitive connections."
-      },
-      mission: {
-        title: "Mission",
-        content: "We help you operate your 'New Reality' more efficiently using 'Visionary Interface'."
-      },
-      values: {
-        title: "Values",
-        v1: {
-          title: "Intelligent",
-          desc: "Simplifying complex processes with AI for professional results."
-        },
-        v2: {
-          title: "Visionary",
-          desc: "Innovative interfaces that lower the barrier to technology."
-        },
-        v3: {
-          title: "Enrichment",
-          desc: "Focusing on making life more valuable through technology."
-        }
-      },
-      tech: {
-        title: "Focus",
+      features: {
+        title: "Key Features",
         f1: {
-          title: "Optimization",
-          desc: "Solving business problems with intelligent interfaces."
+          title: "DualPanel UI",
+          desc: "Manage folders on the left, edit and chat with AI on the right. Compact, icon-only design saves your screen space."
         },
         f2: {
-          title: "Everyday AI",
-          desc: "Implementing cutting-edge tech for immediate experience."
+          title: "Gemini AI Integrated",
+          desc: "Chat with Google Gemini to analyze and improve your prompts instantly. Apply changes with a single click."
         },
         f3: {
-          title: "Seamless",
-          desc: "Technology that blends naturally into your daily life."
+          title: "Robust Image Generation",
+          desc: "Generate high-quality images from text. Features automatic backend retry mechanism for unstable networks."
+        },
+        f4: {
+          title: "100% Local Storage",
+          desc: "Your data stays on your PC. Safely manage massive markdown documents with our recursive tree structure."
+        }
+      },
+      pricing: {
+        title: "Simple Pricing",
+        desc: "Choose the plan that fits your workflow. One-time payment for lifetime access.",
+        free: {
+          name: "Trial Version",
+          price: "$0",
+          period: "14 Days",
+          f1: "Basic prompt management",
+          f2: "Local file import (.md, .txt)",
+          f3: "Limited AI interactions",
+          btn: "Download Free"
+        },
+        pro: {
+          name: "Pro License",
+          price: "$29",
+          period: "Lifetime",
+          f1: "Unlimited folder & prompt management",
+          f2: "Unlimited Gemini AI Chat integration",
+          f3: "AI Image Generation & Save",
+          f4: "Priority support (firstonrivi@onrivi.com)",
+          btn: "Buy License"
         }
       },
       closing: {
-        title: "Promise",
-        content: "Technology as a key, not a barrier. Your future becomes reality now."
+        title: "Ready to optimize?",
+        content: "Stop copy-pasting. Start generating with OnriviPrompt."
       },
       footer: {
-        terms: "Terms",
-        privacy: "Privacy",
+        terms: "Terms of Service",
+        privacy: "Privacy Policy",
         contact: "Contact",
         copy: "© 2026 onrivi."
       }
@@ -75,70 +78,73 @@ const resources = {
   },
   ko: {
     translation: {
-      brand: "Onrivi Prompt",
+      brand: "OnriviPrompt",
       company: "onrivi",
-      slogan: "미래 기술, 일상이 되다",
+      slogan: "나만의 완벽한 AI 프롬프트 관리 비서",
       nav: {
-        intro: "정체성",
-        mission: "미션",
-        values: "가치",
-        tech: "역량",
-        try: "시작"
+        intro: "소개",
+        features: "기능",
+        pricing: "요금 안내",
+        support: "고객 지원",
       },
       hero: {
-        badge: "Operating New Reality",
-        title: "미래를 연결하여",
-        titleAccent: "오늘을 운영하다",
-        description: "온리비(onrivi)는 지능형 인터페이스로 현실을 새롭게 정의합니다. 기술의 잠재력을 일상의 윤택함으로 바꿉니다.",
-        ctaStart: "시작하기",
-        ctaGuide: "소개서"
+        badge: "Smart Prompt Organizer",
+        title: "더 이상 프롬프트를",
+        titleAccent: "잃어버리지 마세요",
+        description: "OnriviPrompt는 비개발자 실무자를 위한 데스크톱 전용 앱입니다. 좌측에서 폴더를 관리하고 우측에서 구글 제미나이(Gemini)와 대화하며 이미지를 생성하는 듀얼패널의 혁신을 경험하세요.",
+        ctaStart: "체험판 다운로드",
+        ctaGuide: "데모 보기",
       },
-      identity: {
-        title: "Identity",
-        content: "onrivi는 지능적 인터페이스를 통해 현실을 재정의합니다. 복잡함을 걷어내고 직관적인 연결을 제공합니다."
-      },
-      mission: {
-        title: "Mission",
-        content: "‘미래 기술’을 도구 삼아, 당신의 ‘현재 일상’을 더 효율적으로 운영하도록 돕습니다."
-      },
-      values: {
-        title: "Values",
-        v1: {
-          title: "지능형 운영",
-          desc: "AI 기술로 복잡한 프로세스를 단순화하여 최적의 환경을 제공합니다."
-        },
-        v2: {
-          title: "미래형 접점",
-          desc: "혁신적 인터페이스로 기술 활용의 진입장벽을 낮춥니다."
-        },
-        v3: {
-          title: "현실의 풍요",
-          desc: "기술을 통해 사용자의 삶을 더 가치 있게 만드는 데 집중합니다."
-        }
-      },
-      tech: {
-        title: "Focus",
+      features: {
+        title: "Key Features",
         f1: {
-          title: "현실 최적화",
-          desc: "지능형 인터페이스로 비즈니스와 일상의 효율을 극대화합니다."
+          title: "심플한 듀얼패널 UI",
+          desc: "좌측은 내 문서(탐색기), 우측은 AI 작업창(에디터)입니다. 텍스트 대신 깔끔한 아이콘으로 화면 공간을 극대화했습니다."
         },
         f2: {
-          title: "기술의 일상화",
-          desc: "최첨단 기술을 즉각 체감할 수 있는 형태로 구현합니다."
+          title: "제미나이(Gemini) AI 연동",
+          desc: "단순 저장을 넘어, AI와 대화하며 기존 프롬프트를 더 전문적인 톤으로 쉽게 업그레이드하고 적용할 수 있습니다."
         },
         f3: {
-          title: "심리스 경험",
-          desc: "기술이 일상에 자연스럽게 녹아드는 편리함을 선사합니다."
+          title: "안정적인 고화질 이미지 생성",
+          desc: "프롬프트로 그림을 그려냅니다. 통신 불안정으로 이미지가 깨져도 백그라운드 3회 자동 재시도 로직으로 안전하게 결과물을 받아냅니다."
+        },
+        f4: {
+          title: "안전한 100% 로컬 저장소",
+          desc: "클라우드 유출 걱정 없이 모든 프롬프트 마크다운(.md) 파일은 내 PC 로컬 디스크에 재귀적 트리 구조로 안전하게 보관됩니다."
+        }
+      },
+      pricing: {
+        title: "Simple Pricing",
+        desc: "불필요한 구독 없이, 단 한 번의 결제로 평생 소장하세요.",
+        free: {
+          name: "Trial Version (체험판)",
+          price: "₩0",
+          period: "14일 무료",
+          f1: "기본 폴더 및 파일 관리",
+          f2: "외부 파일 한번에 가져오기 (.md, .txt)",
+          f3: "제한적 AI(Gemini) 대화 테스트",
+          btn: "무료로 다운로드"
+        },
+        pro: {
+          name: "Pro License",
+          price: "₩39,000",
+          period: "평생 소장(Lifetime)",
+          f1: "무제한 폴더 생성 및 계층 관리",
+          f2: "무제한 Gemini AI 연동 및 자동 수정",
+          f3: "AI 고화질 이미지 생성 및 로컬 다운로드",
+          f4: "우선 고객 지원 (firstonrivi@onrivi.com)",
+          btn: "라이선스 구매하기"
         }
       },
       closing: {
-        title: "Promise",
-        content: "기술은 장벽이 아닌 열쇠입니다. 당신의 미래는 지금 이 순간 현실이 됩니다."
+        title: "Ready to optimize?",
+        content: "메모장 복붙은 그만. 이제 OnriviPrompt와 함께 칼퇴하세요."
       },
       footer: {
-        terms: "약관",
-        privacy: "개인정보",
-        contact: "문의",
+        terms: "이용약관(Terms)",
+        privacy: "개인정보처리방침",
+        contact: "문의하기",
         copy: "© 2026 onrivi."
       }
     }

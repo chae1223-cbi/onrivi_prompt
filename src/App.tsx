@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Sparkles, Heart, ArrowRight, Zap, Target, Cpu, Workflow, UserCheck, Languages } from 'lucide-react';
 
@@ -41,12 +42,13 @@ export default function App() {
           <OnriviLogo className="w-8 h-8" />
           <span className="text-lg font-bold tracking-tight">{t('company')}</span>
         </div>
-        
+
         <div className="flex items-center gap-6">
           <div className="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-400">
-            <a href="#identity" className="hover:text-blue-600 transition-colors">{t('nav.intro')}</a>
-            <a href="#mission" className="hover:text-blue-600 transition-colors">{t('nav.mission')}</a>
-            <a href="#values" className="hover:text-blue-600 transition-colors">{t('nav.values')}</a>
+            <a href="#hero" className="hover:text-blue-600 transition-colors">{t('nav.intro')}</a>
+            <a href="#features" className="hover:text-blue-600 transition-colors">{t('nav.features')}</a>
+            <a href="#pricing" className="hover:text-blue-600 transition-colors">{t('nav.pricing')}</a>
+            <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">{t('nav.support')}</a>
           </div>
 
           <div className="relative">
@@ -67,7 +69,7 @@ export default function App() {
 
       <main className="pt-32">
         {/* Hero */}
-        <section className="max-w-5xl mx-auto px-8 py-20 text-center">
+        <section id="hero" className="max-w-5xl mx-auto px-8 py-20 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest rounded-full mb-8">
             {t('hero.badge')}
           </motion.div>
@@ -85,69 +87,99 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* Identity & Mission */}
-        <section id="identity" className="max-w-5xl mx-auto px-8 py-40 grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+        {/* App Demo or Image (Optional Full Width) */}
+        <section className="max-w-6xl mx-auto px-8 pb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="aspect-video bg-slate-900 rounded-[2rem] shadow-2xl overflow-hidden border-8 border-slate-800 relative flex items-center justify-center group"
           >
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">{t('identity.title')}</h2>
-            <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border border-slate-100 bg-slate-50">
-              <img 
-                src="https://picsum.photos/seed/identity-vision/800/600" 
-                alt="Identity Vision" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </motion.div>
-          <motion.div 
-            id="mission"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="space-y-6"
-          >
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">{t('mission.title')}</h2>
-            <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border border-slate-100 bg-slate-50">
-              <img 
-                src="https://picsum.photos/seed/mission-future/800/600" 
-                alt="Mission Future" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent z-10" />
+
+            {/* 플레이스홀더: 실제 앱 UI 스크린샷으로 교체 예정 */}
+            <div className="text-center z-20">
+              <Sparkles className="w-16 h-16 text-blue-400 mx-auto mb-4 opacity-50 group-hover:scale-110 transition-transform duration-500" />
+              <p className="text-slate-400 font-medium">OnriviPrompt DualPanel Interface Preview</p>
             </div>
           </motion.div>
         </section>
 
-        {/* Values */}
-        <section id="values" className="bg-slate-50 py-40">
+        {/* Features (Key Features of OnriviPrompt) */}
+        <section id="features" className="bg-slate-50 py-32">
           <div className="max-w-5xl mx-auto px-8">
-            <div className="grid md:grid-cols-3 gap-12">
-              {keyValues.map((val, i) => (
-                <div key={i} className="space-y-6">
-                  <div className="w-10 h-10 text-blue-600">{val.icon}</div>
-                  <h3 className="text-xl font-bold">{val.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{val.desc}</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-center tracking-tighter mb-20">{t('features.title')}</h2>
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+              {[
+                { icon: <Workflow />, title: t('features.f1.title'), desc: t('features.f1.desc') },
+                { icon: <Sparkles />, title: t('features.f2.title'), desc: t('features.f2.desc') },
+                { icon: <Zap />, title: t('features.f3.title'), desc: t('features.f3.desc') },
+                { icon: <Cpu />, title: t('features.f4.title'), desc: t('features.f4.desc') }
+              ].map((feat, i) => (
+                <div key={i} className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center">
+                    {feat.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">{feat.title}</h3>
+                    <p className="text-slate-500 leading-relaxed">{feat.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Tech */}
-        <section className="max-w-5xl mx-auto px-8 py-40">
-          <div className="grid md:grid-cols-3 gap-12">
-            {techFocus.map((tech, i) => (
-              <div key={i} className="space-y-6">
-                <div className="w-10 h-10 text-slate-300">{tech.icon}</div>
-                <h3 className="text-xl font-bold">{tech.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{tech.desc}</p>
+        {/* Pricing */}
+        <section id="pricing" className="max-w-5xl mx-auto px-8 py-32">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">{t('pricing.title')}</h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">{t('pricing.desc')}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Free/Trial Plan */}
+            <div className="p-8 rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/50 flex flex-col hover:border-blue-200 transition-colors">
+              <h3 className="text-2xl font-bold mb-2">{t('pricing.free.name')}</h3>
+              <div className="mb-6">
+                <span className="text-5xl font-bold tracking-tighter">{t('pricing.free.price')}</span>
+                <span className="text-slate-500 ml-2 font-medium">/ {t('pricing.free.period')}</span>
               </div>
-            ))}
+              <ul className="space-y-4 mb-8 flex-1">
+                {[t('pricing.free.f1'), t('pricing.free.f2'), t('pricing.free.f3')].map((item, idx) => (
+                  <li key={idx} className="flex flex-start gap-3 items-center text-slate-700">
+                    <UserCheck className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-4 rounded-xl font-bold bg-slate-100 text-slate-900 hover:bg-slate-200 transition-colors">
+                {t('pricing.free.btn')}
+              </button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="p-8 rounded-[2rem] border-2 border-blue-600 bg-blue-600 text-white shadow-2xl shadow-blue-600/30 flex flex-col relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <Target className="w-32 h-32" />
+              </div>
+              <h3 className="text-2xl font-bold mb-2 relative z-10">{t('pricing.pro.name')}</h3>
+              <div className="mb-6 relative z-10">
+                <span className="text-5xl font-bold tracking-tighter">{t('pricing.pro.price')}</span>
+                <span className="text-blue-200 ml-2 font-medium">/ {t('pricing.pro.period')}</span>
+              </div>
+              <ul className="space-y-4 mb-8 flex-1 relative z-10">
+                {[t('pricing.pro.f1'), t('pricing.pro.f2'), t('pricing.pro.f3'), t('pricing.pro.f4')].map((item, idx) => (
+                  <li key={idx} className="flex flex-start gap-3 items-center text-blue-50">
+                    <Heart className="w-5 h-5 text-blue-300 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-4 rounded-xl font-bold bg-white text-blue-600 hover:bg-blue-50 transition-colors relative z-10 shadow-lg">
+                {t('pricing.pro.btn')}
+              </button>
+            </div>
           </div>
         </section>
 
@@ -169,8 +201,8 @@ export default function App() {
           </div>
           <div className="flex gap-8">
             <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">firstonrivi@onrivi.com</a>
-            <a href="#" className="hover:text-slate-900">{t('footer.terms')}</a>
-            <a href="#" className="hover:text-slate-900">{t('footer.privacy')}</a>
+            <Link to="/terms" className="hover:text-slate-900 transition-colors">{t('footer.terms')}</Link>
+            <Link to="/privacy" className="hover:text-slate-900 transition-colors">{t('footer.privacy')}</Link>
           </div>
           <div>{t('footer.copy')}</div>
         </footer>
