@@ -314,6 +314,7 @@ export default function App() {
             <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">firstonrivi@onrivi.com</a>
             <Link to="/terms" className="hover:text-slate-900 transition-colors">{t('footer.terms')}</Link>
             <Link to="/privacy" className="hover:text-slate-900 transition-colors">{t('footer.privacy')}</Link>
+            <Link to="/refund" className="hover:text-slate-900 transition-colors">Refund & Support</Link>
           </div>
           <div className="flex items-center gap-2">
             <span>{t('footer.copy')}</span>

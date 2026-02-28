@@ -5,6 +5,7 @@ import App from './App.tsx';
 import Terms from './pages/Terms.tsx';
 import Privacy from './pages/Privacy.tsx';
 import Admin from './pages/Admin.tsx';
+import RefundPolicy from './pages/RefundPolicy.tsx';
 import './index.css';
 import './i18n';
 
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<App />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/refund" element={<RefundPolicy />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
