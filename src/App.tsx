@@ -204,7 +204,7 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
           ) : (
             <button
               onClick={onAuthClick}
-              className="px-5 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-emerald-400 transition-colors"
+              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-emerald-400 transition-colors shadow-sm"
             >
               Get Started
             </button>
