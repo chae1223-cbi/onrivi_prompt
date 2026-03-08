@@ -224,14 +224,14 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 right-0 bg-zinc-900 border-b border-white/10 p-6 flex flex-col gap-4 md:hidden"
           >
-            <a href="#overview" onClick={() => setMobileMenuOpen(false)} className="text-lg text-white/70">Overview</a>
-            <a href="#mission" onClick={() => setMobileMenuOpen(false)} className="text-lg text-white/70">Mission</a>
-            <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-lg text-white/70">Products</a>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-lg text-white/70">Pricing</a>
+            <a href="#overview" onClick={() => setMobileMenuOpen(false)} className="text-xl font-bold text-white/70">Overview</a>
+            <a href="#mission" onClick={() => setMobileMenuOpen(false)} className="text-xl font-bold text-white/70">Mission</a>
+            <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-xl font-bold text-white/70">Products</a>
+            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="text-xl font-bold text-white/70">Pricing</a>
             {user ? (
-              <button onClick={onLogout} className="w-full py-3 rounded-xl bg-white/5 text-white font-bold">Logout</button>
+              <button onClick={onLogout} className="w-full py-4 rounded-xl bg-white/5 text-white font-black">Logout</button>
             ) : (
-              <button onClick={() => { onAuthClick(); setMobileMenuOpen(false); }} className="w-full py-3 rounded-xl bg-emerald-500 text-black font-bold">Get Started</button>
+              <button onClick={() => { onAuthClick(); setMobileMenuOpen(false); }} className="w-full py-4 rounded-xl bg-emerald-500 text-black font-black">Get Started</button>
             )}
           </motion.div>
         )}
