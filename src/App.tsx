@@ -383,20 +383,6 @@ const Products = () => {
       features: ["계층 구조 탐색기", "동적 변수 ({{...}})", "데스크톱 & 클라우드 연동"],
       icon: <Cpu className="w-8 h-8 text-emerald-400" />,
       type: "주력 상품"
-    },
-    {
-      name: t('services.s2.title'),
-      desc: t('services.s2.desc'),
-      features: ["작성 방법론", "관리 가이드", "베스트 프랙티스"],
-      icon: <BookOpen className="w-8 h-8 text-blue-400" />,
-      type: "가이드"
-    },
-    {
-      name: t('services.s3.title'),
-      desc: t('services.s3.desc'),
-      features: ["기업 특화 연동", "데이터 관리", "보안 프록시"],
-      icon: <Globe className="w-8 h-8 text-purple-400" />,
-      type: "엔터프라이즈"
     }
   ];
 
