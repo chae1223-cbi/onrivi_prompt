@@ -168,51 +168,54 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/60 backdrop-blur-xl border-b border-white/5 py-3' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="relative">
-            <img src="/logo.png" alt={t('company')} className="w-6 h-6 object-contain rounded-md transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-emerald-500/5 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="flex items-center gap-4 group cursor-pointer">
+          <div className="relative p-2 rounded-2xl bg-white/5 border border-white/10 group-hover:border-onrivi-yellow/50 transition-all">
+            <img src="/logo.png" alt={t('company')} className="w-6 h-6 object-contain transition-transform duration-700 group-hover:rotate-[360deg]" />
           </div>
-          <span className="text-sm font-bold tracking-tighter text-white uppercase">{t('company')}</span>
+          <div className="flex flex-col -gap-1">
+            <span className="text-sm font-black tracking-tighter text-white uppercase group-hover:text-onrivi-yellow transition-colors">{t('company')}</span>
+            <span className="text-[8px] font-bold text-white/30 tracking-[0.2em] uppercase">Human-Centric AI</span>
+          </div>
         </div>
 
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#overview" className="text-xs font-bold text-white/70 hover:text-white transition-colors">{t('nav.intro')}</a>
-          <a href="#mission" className="text-xs font-bold text-white/70 hover:text-white transition-colors">Mission</a>
-          <a href="#products" className="text-xs font-bold text-white/70 hover:text-white transition-colors">Products</a>
-          <a href="#pricing" className="text-xs font-bold text-white/70 hover:text-white transition-colors">{t('nav.pricing')}</a>
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-8 px-6 py-2 rounded-full bg-white/5 border border-white/5 group/nav">
+            <a href="#overview" className="text-[10px] font-bold text-white/50 hover:text-onrivi-yellow transition-all uppercase tracking-widest leading-none">Story</a>
+            <a href="#mission" className="text-[10px] font-bold text-white/50 hover:text-onrivi-yellow transition-all uppercase tracking-widest leading-none">Vision</a>
+            <a href="#products" className="text-[10px] font-bold text-white/50 hover:text-onrivi-yellow transition-all uppercase tracking-widest leading-none">Assets</a>
+            <a href="#pricing" className="text-[10px] font-bold text-white/50 hover:text-onrivi-yellow transition-all uppercase tracking-widest leading-none">Pricing</a>
+          </div>
 
-          <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
-            <button onClick={() => toggleLanguage('ko')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'ko' ? 'bg-white text-black shadow-sm' : 'text-white/40 hover:text-white'}`}>KO</button>
-            <button onClick={() => toggleLanguage('en')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'en' ? 'bg-white text-black shadow-sm' : 'text-white/40 hover:text-white'}`}>EN</button>
+          <div className="flex items-center gap-2 p-1 rounded-full bg-white/5 border border-white/5">
+            <button onClick={() => toggleLanguage('ko')} className={`px-3 py-1.5 rounded-full text-[9px] font-black transition-all ${i18n.language === 'ko' ? 'bg-onrivi-yellow text-black' : 'text-white/30 hover:text-white'}`}>KO</button>
+            <button onClick={() => toggleLanguage('en')} className={`px-3 py-1.5 rounded-full text-[9px] font-black transition-all ${i18n.language === 'en' ? 'bg-onrivi-yellow text-black' : 'text-white/30 hover:text-white'}`}>EN</button>
           </div>
 
           {user ? (
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-                <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center overflow-hidden">
-                  {user.photoURL ? <img src={user.photoURL} alt="" /> : <User className="w-4 h-4 text-black" />}
-                </div>
-                <span className="text-sm font-medium text-white/80">{user.displayName || 'User'}</span>
-              </div>
-              <button onClick={onLogout} className="p-2 rounded-full hover:bg-white/5 text-white/40 hover:text-white transition-all">
+              <button onClick={onLogout} className="p-2.5 rounded-full bg-white/5 border border-white/10 text-white/40 hover:text-onrivi-yellow hover:border-onrivi-yellow/50 transition-all">
                 <LogOut className="w-4 h-4" />
               </button>
+              <div className="w-8 h-8 rounded-full border-2 border-onrivi-yellow/30 p-0.5 overflow-hidden">
+                <div className="w-full h-full rounded-full bg-zinc-800 flex items-center justify-center overflow-hidden">
+                  {user.photoURL ? <img src={user.photoURL} alt="" /> : <User className="w-4 h-4 text-onrivi-yellow" />}
+                </div>
+              </div>
             </div>
           ) : (
             <button
               onClick={onAuthClick}
-              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-emerald-400 transition-colors shadow-sm"
+              className="px-5 py-2 rounded-full bg-onrivi-yellow text-black text-[10px] font-black hover:scale-105 active:scale-95 transition-all shadow-lg shadow-onrivi-yellow/20"
             >
-              Get Started
+              Start Creating
             </button>
           )}
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X /> : <Menu />}
+        <button className="md:hidden text-white p-2 rounded-xl bg-white/5" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -243,40 +246,89 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
 const Hero = ({ onAuthClick }: { onAuthClick: () => void }) => {
   const { t } = useTranslation();
   return (
-    <section id="overview" className="relative pt-24 pb-16 md:pt-36 md:pb-24 overflow-hidden border-b border-white/5">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
-      </div>
+    <section id="overview" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-circuit">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-onrivi-yellow/5 border border-onrivi-yellow/20 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-onrivi-yellow animate-pulse" />
+              <span className="text-onrivi-yellow text-[10px] font-black tracking-widest uppercase">
+                {t('hero.badge')}
+              </span>
+            </div>
 
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-left md:text-center max-w-4xl mx-auto"
-        >
-          <span className="inline-flex items-center px-3 py-1 mb-6 rounded-full bg-white/5 border border-white/10 text-emerald-400 text-[10px] font-bold tracking-widest uppercase">
-            {t('hero.badge')}
-          </span>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-[1.15]">
-            {t('hero.title')}
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500">
-              {t('hero.titleAccent')}
-            </span>
-          </h1>
-          <p className="max-w-2xl md:mx-auto text-sm md:text-base text-white/50 mb-10 leading-relaxed font-medium">
-            {t('hero.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center md:justify-center gap-3">
-            <button onClick={onAuthClick} className="w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-500 text-black font-black text-sm hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/10">
-              {t('hero.ctaStart')}
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button className="w-full sm:w-auto px-7 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all">
-              {t('hero.ctaGuide')}
-            </button>
-          </div>
-        </motion.div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-8 leading-[1.05]">
+              기술에 <span className="text-onrivi-yellow italic">인간의 숨결</span>을<br />
+              더하는 <span className="onrivi-gradient-text">하이테크 혁명.</span>
+            </h1>
+
+            <p className="max-w-xl text-lg text-white/60 mb-12 leading-relaxed font-medium border-l-2 border-onrivi-yellow/30 pl-6">
+              정적인 도구를 넘어, 당신의 창의성이 살아 움직이는 디지털 자산이 되는 공간. 온리비는 1인 기업가들의 가장 신뢰할 수 있는 지적 파트너입니다.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <button
+                onClick={onAuthClick}
+                className="group relative w-full sm:w-auto px-10 py-4 overflow-hidden rounded-2xl bg-onrivi-yellow text-black font-black text-sm transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-onrivi-yellow/20"
+              >
+                <div className="relative z-10 flex items-center justify-center gap-2">
+                  {t('hero.ctaStart')}
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </div>
+              </button>
+              <button className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                Brand Story
+              </button>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative hidden lg:block"
+          >
+            <div className="relative z-10 floating-element p-8 rounded-[3rem] glass-premium">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-onrivi-yellow/20 blur-[80px] -z-10" />
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-onrivi-mint/20 blur-[80px] -z-10" />
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-onrivi-yellow flex items-center justify-center shadow-lg shadow-onrivi-yellow/20">
+                    <Rocket className="text-black w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-black text-white/30 uppercase tracking-widest">Growth Engine</div>
+                    <div className="text-xl font-bold text-white tracking-tight">Onrivi Intelligence</div>
+                  </div>
+                </div>
+                <div className="h-px bg-white/10 w-full" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
+                    <div className="text-[9px] font-bold text-onrivi-mint uppercase mb-1">Efficiency</div>
+                    <div className="text-2xl font-black text-white">+142%</div>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
+                    <div className="text-[9px] font-bold text-onrivi-yellow uppercase mb-1">Safety</div>
+                    <div className="text-2xl font-black text-white">99.9%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 비정형 장식 요소 */}
+            <div className="absolute -top-12 -left-12 p-6 rounded-3xl glass-warm floating-element [animation-delay:2s]">
+              <Zap className="text-onrivi-yellow w-8 h-8" />
+            </div>
+            <div className="absolute -bottom-8 right-12 p-4 rounded-2xl glass-premium floating-element [animation-delay:4s]">
+              <div className="w-3 h-3 rounded-full bg-onrivi-mint" />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
