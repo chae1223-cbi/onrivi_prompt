@@ -243,36 +243,36 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
 const Hero = ({ onAuthClick }: { onAuthClick: () => void }) => {
   const { t } = useTranslation();
   return (
-    <section id="overview" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <section id="overview" className="relative pt-24 pb-16 md:pt-36 md:pb-24 overflow-hidden border-b border-white/5">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-500/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          className="text-left md:text-center max-w-4xl mx-auto"
         >
-          <span className="inline-block px-4 py-1.5 mb-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-widest uppercase">
+          <span className="inline-flex items-center px-3 py-1 mb-6 rounded-full bg-white/5 border border-white/10 text-emerald-400 text-[10px] font-bold tracking-widest uppercase">
             {t('hero.badge')}
           </span>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-[1.2]">
-            {t('hero.title')}<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-[1.15]">
+            {t('hero.title')}
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500">
               {t('hero.titleAccent')}
             </span>
           </h1>
-          <p className="max-w-xl mx-auto text-sm md:text-base text-white/60 mb-8 leading-relaxed">
+          <p className="max-w-2xl md:mx-auto text-sm md:text-base text-white/50 mb-10 leading-relaxed font-medium">
             {t('hero.description')}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={onAuthClick} className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 group">
+          <div className="flex flex-col sm:flex-row items-center md:justify-center gap-3">
+            <button onClick={onAuthClick} className="w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-500 text-black font-black text-sm hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/10">
               {t('hero.ctaStart')}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all">
+            <button className="w-full sm:w-auto px-7 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all">
               {t('hero.ctaGuide')}
             </button>
           </div>
@@ -345,28 +345,28 @@ const CoreValues = () => {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-20 border-b border-white/5 bg-zinc-950/30">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">핵심 가치</h2>
-          <p className="text-sm text-white/60">온리비가 추구하는 세 가지 철학</p>
+          <h2 className="text-2xl md:text-3xl font-black text-white mb-3 tracking-tight">핵심 가치</h2>
+          <p className="text-xs font-bold text-white/30 uppercase tracking-[0.2em]">Our Core Philosophy</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {values.map((v, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-3xl bg-zinc-900/50 border border-white/5 hover:border-white/10 transition-all group"
+              className="p-7 rounded-[1.5rem] bg-zinc-900/50 border border-white/5 hover:border-emerald-500/30 transition-all group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-emerald-500/10 transition-colors">
                 {v.icon}
               </div>
-              <span className="text-xs font-bold text-white/40 uppercase tracking-widest mb-2 block">{v.tag}</span>
-              <h3 className="text-2xl font-bold text-white mb-4">{v.title}</h3>
-              <p className="text-white/60 leading-relaxed">{v.desc}</p>
+              <span className="text-[10px] font-black text-emerald-500/80 uppercase tracking-widest mb-3 block">{v.tag}</span>
+              <h3 className="text-lg font-bold text-white mb-3">{v.title}</h3>
+              <p className="text-xs text-white/40 leading-relaxed font-medium">{v.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -388,37 +388,46 @@ const Products = () => {
   ];
 
   return (
-    <section id="products" className="py-24 bg-zinc-950">
+    <section id="products" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">제품 및 서비스</h2>
-          <p className="text-sm text-white/60">당신의 아이디어를 체계적인 데이터로 관리하세요</p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-3 tracking-tight">제품 및 서비스</h2>
+            <p className="text-sm text-white/40 leading-relaxed">프롬프트를 넘어, 당신의 아이디어를 체계적인 지적 자산으로 전환하는 가장 완벽한 방법을 제안합니다.</p>
+          </div>
+          <div className="h-px flex-1 bg-white/5 mx-8 hidden md:block mb-4" />
+          <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Product Lineup</span>
         </div>
-        <div className="space-y-8">
+
+        <div className="space-y-6">
           {products.map((p, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 md:p-12 rounded-[2rem] bg-zinc-900 border border-white/5 flex flex-col md:flex-row gap-8 items-center"
+              className="p-6 md:p-8 rounded-[1.5rem] bg-zinc-900/80 border border-white/5 hover:border-white/10 flex flex-col md:flex-row gap-8 items-center group transition-all"
             >
-              <div className="w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/10 transition-colors">
                 {p.icon}
               </div>
               <div className="flex-1 text-center md:text-left">
-                <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-2 block">{p.type}</span>
-                <h3 className="text-3xl font-bold text-white mb-4">{p.name}</h3>
-                <p className="text-lg text-white/60 mb-6 max-w-2xl">{p.desc}</p>
-                <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+                  <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">{p.type}</span>
+                  <div className="w-1 h-1 rounded-full bg-white/20" />
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">v1.0 Ready</span>
+                </div>
+                <h3 className="text-xl font-black text-white mb-3">{p.name}</h3>
+                <p className="text-sm text-white/50 mb-6 max-w-2xl leading-relaxed">{p.desc}</p>
+                <div className="flex flex-wrap justify-center md:justify-start gap-2">
                   {p.features.map((f, fi) => (
-                    <span key={fi} className="px-4 py-1.5 rounded-full bg-white/5 text-white/80 text-sm border border-white/10">
+                    <span key={fi} className="px-3 py-1 rounded-lg bg-white/5 text-white/40 text-[10px] font-bold border border-white/10">
                       {f}
                     </span>
                   ))}
                 </div>
               </div>
-              <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-emerald-400 transition-colors shrink-0">
+              <button className="w-full md:w-auto px-7 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm font-black hover:bg-white hover:text-black transition-all shrink-0">
                 자세히 보기
               </button>
             </motion.div>
