@@ -77,3 +77,25 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
+
+/* 웜 톤 배경 및 텍스트 유틸리티 */
+.bg-warm-cream-canvas {
+  background-color: #FDFCF8;
+  color: #18181B;
+}
+
+.bg-warm-gray-canvas {
+  background-color: #F5F5F0;
+  color: #18181B;
+}
+
+.glass-warm-intensive {
+  background: rgba(253, 252, 248, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 214, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(214, 180, 0, 0.05);
+}
+
+.onrivi-warm-shadow {
+  box-shadow: 0 20px 60px -15px rgba(255, 214, 0, 0.1);
+}
