@@ -101,7 +101,7 @@ const resources = {
   ko: {
     translation: {
       brand: "OnriviPrompt",
-      company: "온리비 (Onrivi)",
+      company: "온리비",
       slogan: "프롬프트를 넘어, 자산으로",
       nav: {
         intro: "소개",
