@@ -55,8 +55,8 @@ const AuthModal = ({ isOpen, onClose, onLogin }: { isOpen: boolean; onClose: () 
         </button>
 
         <div className="text-center mb-10">
-          <div className="w-24 h-24 mx-auto mb-8">
-            <img src="/logo.png" alt={t('company')} className="w-full h-full object-contain rounded-2xl shadow-xl shadow-emerald-500/20" />
+          <div className="w-16 h-16 mx-auto mb-6">
+            <img src="/logo.png" alt={t('company')} className="w-full h-full object-contain rounded-xl shadow-lg shadow-emerald-500/10" />
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">Welcome to Onrivi</h2>
           <p className="text-white/60">{t('hero.description')}</p>
@@ -170,12 +170,12 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-4 group cursor-pointer">
+        <div className="flex items-center gap-3 group cursor-pointer">
           <div className="relative">
-            <img src="/logo.png" alt={t('company')} className="w-14 h-14 object-contain rounded-2xl transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <img src="/logo.png" alt={t('company')} className="w-9 h-9 object-contain rounded-lg transition-transform duration-500 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-emerald-500/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <span className="text-2xl font-black tracking-tighter text-white uppercase">{t('company')}</span>
+          <span className="text-lg font-bold tracking-tighter text-white uppercase">{t('company')}</span>
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -504,9 +504,9 @@ const Footer = () => {
     <footer className="py-12 border-t border-white/10 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-4">
-            <img src="/logo.png" alt={t('company')} className="w-12 h-12 object-contain rounded-xl" />
-            <span className="text-xl font-black tracking-tighter text-white uppercase">{t('company')}</span>
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt={t('company')} className="w-8 h-8 object-contain rounded-lg" />
+            <span className="text-lg font-bold tracking-tighter text-white uppercase">{t('company')}</span>
           </div>
           <p className="text-white/40 text-sm">
             {t('footer.copy')}
