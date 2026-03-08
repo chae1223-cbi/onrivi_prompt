@@ -19,8 +19,8 @@ const resources = {
         badge: "Beyond Prompts, Into Assets",
         title: "Scale Your",
         titleAccent: "Creative Assets",
-        description: "Onrivi is an AI asset management solution company that helps creators' ideas and AI conversation records accumulate as valuable data. Experience the perfect environment to store and utilize your intellectual assets.",
-        ctaStart: "Start SaaS Now",
+        description: "Experience the next-generation AI productivity with Onrivi. Professional workbench for company vision and seamless management.",
+        ctaStart: "Get Started",
         ctaGuide: "Service Guide",
       },
       values: {
@@ -114,8 +114,8 @@ const resources = {
         badge: "프롬프트를 넘어, 자산으로",
         title: "당신의 아이디어를",
         titleAccent: "가치 있는 자산으로",
-        description: "온리비(Onrivi)는 창작자들의 아이디어와 AI 대화 기록이 가치 있는 데이터로 축적될 수 있도록 돕는 AI 자산 관리 솔루션 기업입니다. 1인 기업의 기동성과 SaaS의 안정성이 결합된 최적의 환경을 경험하세요.",
-        ctaStart: "SaaS 시작하기",
+        description: "온리비와 함께 차세대 AI 생산성을 경험하세요. 기업의 비전과 원활한 관리를 위한 전문적인 워크벤치입니다.",
+        ctaStart: "시작하기",
         ctaGuide: "서비스 안내",
       },
       values: {
@@ -148,7 +148,7 @@ const resources = {
         }
       },
       pricing: {
-        title: "SaaS 요금 정책",
+        title: "요금 정책",
         desc: "귀하의 비즈니스 규모에 맞는 최적의 플랜을 선택하세요.",
         free: {
           name: "Starter (무료)",
