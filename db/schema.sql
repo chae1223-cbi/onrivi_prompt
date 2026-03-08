@@ -1,40 +1,50 @@
--- OnriviPrompt D1 Database Schema
--- Last Updated: 2026-02-27
+-- onrivi_prompt SaaS Database Schema v1.1 (Cloudflare D1)
+-- 작성일: 2026-03-08
+-- 목적: 사용자별 데이터 격리 및 관리자 권한 관리를 위한 통합 스키마
 
--- 1. Licenses Table (라이선스 정보 저장)
-CREATE TABLE IF NOT EXISTS licenses (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    customer_email TEXT NOT NULL,
-    license_key TEXT UNIQUE NOT NULL,
-    plan_type TEXT NOT NULL DEFAULT 'Pro', -- Pro, Enterprise 등
-    status TEXT NOT NULL DEFAULT 'active',   -- active, revoked, expired
-    issued_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    expires_at DATETIME,                    -- 무제한일 경우 NULL
-    last_verified_at DATETIME,              -- 최근 앱 인증 시간
-    metadata TEXT                            -- 추가 정보 (JSON 형태)
+-- 1. 사용자(Users) 테이블: 계정 정보 및 권한/플랜 관리
+CREATE TABLE IF NOT EXISTS users (
+    id TEXT PRIMARY KEY,           -- 고유 식별자 (Auth ID 또는 UUID)
+    email TEXT UNIQUE NOT NULL,    -- 사용자 이메일
+    role TEXT DEFAULT 'user',      -- 'admin' (관리자), 'user' (일반)
+    plan TEXT DEFAULT 'free',      -- 'free', 'basic', 'pro'
+    usage_limit INTEGER DEFAULT 500,-- 월간 무료 호출 한도
+    createdAt INTEGER DEFAULT (strftime('%s', 'now')),
+    updatedAt INTEGER DEFAULT (strftime('%s', 'now'))
 );
 
--- 2. Transactions Table (결제 내역 저장)
-CREATE TABLE IF NOT EXISTS transactions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    order_id TEXT UNIQUE NOT NULL,          -- 결제 대행사(Paddle 등)의 주문 ID
-    customer_email TEXT NOT NULL,
-    amount REAL NOT NULL,                   -- 결제 금액
-    currency TEXT NOT NULL DEFAULT 'USD',   -- 통화
-    payment_status TEXT NOT NULL,           -- completed, refunded, disputed
-    provider TEXT NOT NULL DEFAULT 'Paddle',-- 결제 플랫폼 이름
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+-- 2. 프롬프트(Prompts) 테이블: 사용자별 독립적인 데이터 저장
+CREATE TABLE IF NOT EXISTS prompts (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,         -- 소유자 식별자 (외래키)
+    title TEXT NOT NULL,           -- 제목
+    content TEXT,                  -- 프롬프트 본문
+    instruction TEXT,              -- 시스템 지시문
+    result TEXT,                   -- AI 실행 결과
+    type TEXT DEFAULT 'file',      -- 'file' 또는 'folder'
+    rootType TEXT,                 -- 'archive', 'workbench', 'lifeprompt', 'markdown'
+    parentId TEXT,                 -- 부모 폴더 ID
+    sortOrder INTEGER DEFAULT 0,    -- 정렬 순서 (Dnd용)
+    createdAt INTEGER DEFAULT (strftime('%s', 'now')),
+    updatedAt INTEGER DEFAULT (strftime('%s', 'now')),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- 3. Activation Logs Table (앱 사용/인증 로그 - 부정 사용 방지용)
-CREATE TABLE IF NOT EXISTS activation_logs (
+-- 3. 사용량(Usage) 테이블: AI API 호출 기록 및 비용 트래킹 (어드민용)
+CREATE TABLE IF NOT EXISTS usage (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    license_key TEXT NOT NULL,
-    ip_address TEXT,                        -- 접속 IP
-    device_info TEXT,                       -- 기기 정보 (OS 등)
-    activated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (license_key) REFERENCES licenses (license_key)
+    user_id TEXT NOT NULL,
+    model TEXT,                    -- 사용된 Gemini 모델명
+    prompt_tokens INTEGER,         -- 입력 토큰
+    completion_tokens INTEGER,     -- 출력 토큰
+    total_tokens INTEGER,          -- 총 토큰
+    cost REAL,                     -- 예상 발생 비용 (USD)
+    createdAt INTEGER DEFAULT (strftime('%s', 'now')),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- 초기 관리자 대시보드 테스트용 데이터 (선택 사항)
--- INSERT INTO licenses (customer_email, license_key, plan_type) VALUES ('test@onrivi.com', 'ONRIVI-DEMO-KEY-2026', 'Pro');
+-- 성능 및 보안을 위한 인덱스 설정
+CREATE INDEX IF NOT EXISTS idx_prompts_user ON prompts(user_id);
+CREATE INDEX IF NOT EXISTS idx_prompts_user_parent ON prompts(user_id, parentId);
+CREATE INDEX IF NOT EXISTS idx_usage_user ON usage(user_id);
+CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
