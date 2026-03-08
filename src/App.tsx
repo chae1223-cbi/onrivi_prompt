@@ -55,8 +55,8 @@ const AuthModal = ({ isOpen, onClose, onLogin }: { isOpen: boolean; onClose: () 
         </button>
 
         <div className="text-center mb-10">
-          <div className="w-16 h-16 mx-auto mb-6">
-            <img src="/logo.png" alt={t('company')} className="w-full h-full object-contain rounded-xl shadow-lg shadow-emerald-500/10" />
+          <div className="w-10 h-10 mx-auto mb-4">
+            <img src="/logo.png" alt={t('company')} className="w-full h-full object-contain rounded-lg shadow-md shadow-emerald-500/5" />
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">Welcome to Onrivi</h2>
           <p className="text-white/60">{t('hero.description')}</p>
@@ -170,12 +170,12 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-3 group cursor-pointer">
+        <div className="flex items-center gap-2 group cursor-pointer">
           <div className="relative">
-            <img src="/logo.png" alt={t('company')} className="w-9 h-9 object-contain rounded-lg transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-emerald-500/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+            <img src="/logo.png" alt={t('company')} className="w-6 h-6 object-contain rounded-md transition-transform duration-500 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-emerald-500/5 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <span className="text-lg font-bold tracking-tighter text-white uppercase">{t('company')}</span>
+          <span className="text-sm font-bold tracking-tighter text-white uppercase">{t('company')}</span>
         </div>
 
         <div className="hidden md:flex items-center gap-8">
