@@ -55,8 +55,8 @@ const AuthModal = ({ isOpen, onClose, onLogin }: { isOpen: boolean; onClose: () 
         </button>
 
         <div className="text-center mb-10">
-          <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Rocket className="text-emerald-400 w-8 h-8" />
+          <div className="w-20 h-20 mx-auto mb-6">
+            <img src="/logo.png" alt="Onrivi Logo" className="w-full h-full object-contain rounded-2xl shadow-lg shadow-emerald-500/20" />
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">Welcome to Onrivi</h2>
           <p className="text-white/60">{t('hero.description')}</p>
@@ -170,10 +170,8 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-            <Rocket className="text-black w-5 h-5" />
-          </div>
+        <div className="flex items-center gap-3">
+          <img src="/logo.png" alt="Onrivi Logo" className="w-10 h-10 object-contain rounded-xl" />
           <span className="text-xl font-bold tracking-tighter text-white">ONRIVI</span>
         </div>
 
@@ -503,10 +501,8 @@ const Footer = () => {
     <footer className="py-12 border-t border-white/10 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-emerald-500 rounded flex items-center justify-center">
-              <Rocket className="text-black w-4 h-4" />
-            </div>
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Onrivi Logo" className="w-8 h-8 object-contain rounded-lg" />
             <span className="text-lg font-bold tracking-tighter text-white">ONRIVI</span>
           </div>
           <p className="text-white/40 text-sm">
