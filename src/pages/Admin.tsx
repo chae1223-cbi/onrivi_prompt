@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
     LayoutDashboard,
     Key,
@@ -40,51 +41,46 @@ interface License {
 export default function Admin() {
     const [activeTab, setActiveTab] = useState('dashboard');
     const [copiedId, setCopiedId] = useState<string | null>(null);
-    const [licenses, setLicenses] = useState<License[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isGenerating, setIsGenerating] = useState(false);
+    const queryClient = useQueryClient();
 
-    // Fetch Licenses
-    const fetchLicenses = async () => {
-        setIsLoading(true);
-        try {
+    // Fetch Licenses with useQuery
+    const { data: licenses = [], isLoading, refetch } = useQuery({
+        queryKey: ['licenses'],
+        queryFn: async () => {
             const res = await fetch('/api/admin/licenses');
-            if (res.ok) {
-                const data = await res.json() as License[];
-                setLicenses(data);
+            if (res.status === 401) {
+                throw new Error('인증이 필요합니다. 페이지를 새로고침하여 로그인해주세요.');
             }
-        } catch (error) {
-            console.error('Failed to fetch licenses:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+            if (!res.ok) throw new Error('데이터를 불러오지 못했습니다.');
+            return res.json() as Promise<License[]>;
+        },
+        enabled: activeTab === 'licenses',
+    });
 
-    useEffect(() => {
-        if (activeTab === 'licenses') {
-            fetchLicenses();
-        }
-    }, [activeTab]);
-
-    const handleGenerateKey = async () => {
-        const email = prompt('Enter customer email for new license:');
-        if (!email) return;
-
-        setIsGenerating(true);
-        try {
+    // Generate License with useMutation
+    const mutation = useMutation({
+        mutationFn: async (email: string) => {
             const res = await fetch('/api/admin/licenses', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, plan: 'Pro' })
             });
-            if (res.ok) {
-                alert('New license key generated successfully!');
-                fetchLicenses();
-            }
-        } catch (error) {
+            if (!res.ok) throw new Error('Failed to generate license');
+            return res.json();
+        },
+        onSuccess: () => {
+            alert('New license key generated successfully!');
+            queryClient.invalidateQueries({ queryKey: ['licenses'] });
+        },
+        onError: () => {
             alert('Failed to generate license key.');
-        } finally {
-            setIsGenerating(false);
+        }
+    });
+
+    const handleGenerateKey = () => {
+        const email = prompt('Enter customer email for new license:');
+        if (email) {
+            mutation.mutate(email);
         }
     };
 
@@ -103,7 +99,7 @@ export default function Admin() {
                     <span className="font-extrabold tracking-tighter lowercase text-xl">onrivi admin</span>
                 </div>
 
-                <nav className="flex-1 space-y-1">
+                <nav className="flex-1 space-y-1" aria-label="Main Navigation">
                     {[
                         { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
                         { id: 'licenses', label: 'Licenses', icon: <Key className="w-4 h-4" /> },
@@ -155,7 +151,7 @@ export default function Admin() {
                             <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-slate-50 rounded-full" />
                         </button>
                         <div className="w-10 h-10 bg-slate-200 rounded-full border-2 border-white shadow-sm overflow-hidden">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Avatar" />
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="" role="presentation" />
                         </div>
                     </div>
                 </header>
@@ -243,17 +239,17 @@ export default function Admin() {
                             </div>
                             <div className="flex gap-3">
                                 <button
-                                    onClick={fetchLicenses}
+                                    onClick={() => refetch()}
                                     className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors"
                                 >
                                     <TrendingUp className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} /> Refresh
                                 </button>
                                 <button
                                     onClick={handleGenerateKey}
-                                    disabled={isGenerating}
+                                    disabled={mutation.isPending}
                                     className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20 disabled:opacity-50"
                                 >
-                                    {isGenerating ? <Loader2 className="w-4 h-4 animate-spin" /> : <UserPlus className="w-4 h-4" />}
+                                    {mutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <UserPlus className="w-4 h-4" />}
                                     Generate New Key
                                 </button>
                             </div>

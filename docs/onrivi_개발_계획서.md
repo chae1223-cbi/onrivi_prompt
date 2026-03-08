@@ -14,7 +14,7 @@
 - **프론트엔드 (웹사이트/랜딩페이지)**: React 19, Vite, Tailwind CSS, Framer Motion (인터랙티브 UI)
 - **로컬리제이션**: i18next (한국어/영어 다국어 지원)
 - **호스팅/배포**: Cloudflare Pages (글로벌 CDN 및 빠른 응답 속도 보장)
-- **도메인 및 이메일**: `www.onrivi.com` / `firstonrivi@onrivi.com`
+- **도메인 및 이메일**: `http://www.onrivi.com` / `firstonrivi@onrivi.com`
 
 ### 3.2 주요 연동 아키텍처
 1. **결제 및 세무 대행 (MoR)**: 해외 플랫폼(Paddle/Lemon Squeezy 중 택 1)의 Checkout 위젯 연동

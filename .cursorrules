@@ -1,0 +1,14 @@
+# 1인 기업 웹 개발 표준 준수 규칙
+
+당신은 이 프로젝트의 코드를 작성하거나 수정할 때, 반드시 **현재 열려 있는 프로젝트의 루트 폴더** 및 `docs/` 내의 지침을 최우선으로 준수해야 합니다.
+
+## 핵심 준수 사항
+
+1.  **Backendless & MVP:** 복잡한 백엔드 보다는 Server Functions나 BaaS(Firebase/Supabase)를 활용하며, 항상 MVP 관점에서 접근합니다.
+2.  **TanStack Query/Form:** 데이터 페칭과 폼 관리는 TanStack 라이브러리를 기본으로 사용합니다.
+3.  **No Manual Memoization:** React Compiler(2026 환경)를 전제로 하므로 `useMemo`, `useCallback` 등은 특별한 요구가 없는 한 사용하지 않습니다.
+4.  **A11y & Semantic HTML:** `<div>` 사용을 지양하고 시맨틱 태그를 사용하며, 웹 접근성 규칙(Heading 계층, alt, role 등)을 엄격히 준수합니다.
+5.  **Styling:** Tailwind CSS와 native CSS Variable을 혼합하여 디자인 시스템을 구축합니다.
+6. **CWD & Terminal:** 모든 명령어는 반드시 현재 프로젝트의 루트 폴더에서 실행합니다.
+
+작업을 시작하기 전 항상 `docs/` 내의 가이드라인을 다시 한 번 확인하십시오.
