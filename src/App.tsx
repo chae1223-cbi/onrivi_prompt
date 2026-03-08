@@ -41,30 +41,38 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-blue-100 bg-white text-slate-900">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="flex items-center gap-3">
           <OnriviLogo className="w-8 h-8" />
           <span className="text-xl font-extrabold tracking-tighter lowercase">{t('company')}</span>
         </div>
 
         <div className="flex items-center gap-6">
-          <div className="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-400">
+          <div className="hidden lg:flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
             <a href="#hero" className="hover:text-blue-600 transition-colors">{t('nav.intro')}</a>
-            <a href="#features" className="hover:text-blue-600 transition-colors">{t('nav.features')}</a>
-            <a href="#pricing" className="hover:text-blue-600 transition-colors">{t('nav.pricing')}</a>
+            <a href="#features" className="hover:text-blue-600 transition-colors text-blue-600">{t('nav.features')}</a>
+            <a href="#pricing" className="hover:text-blue-600 transition-colors uppercase decoration-blue-500 underline-offset-8 decoration-2">{t('nav.pricing')}</a>
             <a href="#roadmap" className="hover:text-blue-600 transition-colors">{t('nav.roadmap')}</a>
-            <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">{t('nav.support')}</a>
+          </div>
+
+          <div className="flex items-center gap-4 border-l border-slate-100 pl-6 ml-2">
+            <button className="text-xs font-bold text-slate-900 hover:text-blue-600 transition-colors uppercase tracking-widest">
+              Login
+            </button>
+            <button className="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-blue-600 transition-all shadow-lg hover:shadow-blue-500/20">
+              {t('pricing.free.btn')}
+            </button>
           </div>
 
           <div className="relative">
-            <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} className="p-2 text-slate-400 hover:text-slate-900 transition-colors">
-              <Languages className="w-5 h-5" />
+            <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} className="p-2 text-slate-400 hover:text-slate-900 transition-colors border border-slate-100 rounded-full">
+              <Languages className="w-4 h-4" />
             </button>
             <AnimatePresence>
               {isLangMenuOpen && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden">
-                  <button onClick={() => toggleLanguage('ko')} className="w-full px-4 py-2 text-left text-sm hover:bg-blue-50 transition-colors font-medium">KO</button>
-                  <button onClick={() => toggleLanguage('en')} className="w-full px-4 py-2 text-left text-sm hover:bg-blue-50 transition-colors font-medium">EN</button>
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="absolute right-0 mt-3 w-32 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-[60]">
+                  <button onClick={() => toggleLanguage('ko')} className="w-full px-4 py-3 text-left text-xs hover:bg-blue-50 transition-colors font-bold tracking-widest">KO</button>
+                  <button onClick={() => toggleLanguage('en')} className="w-full px-4 py-3 text-left text-xs hover:bg-blue-50 transition-colors font-bold tracking-widest">EN</button>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -74,43 +82,49 @@ export default function App() {
 
       <main className="pt-32">
         {/* Hero */}
-        <section id="hero" className="max-w-5xl mx-auto px-8 py-20 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest rounded-full mb-8">
+        <section id="hero" className="max-w-5xl mx-auto px-8 py-24 text-center">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-full mb-10 border border-blue-100/50">
+            <Sparkles className="w-3 h-3" />
             {t('hero.badge')}
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-none">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8, ease: "circOut" }} className="text-7xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.85]">
             {t('hero.title')} <br />
-            <span className="text-blue-600">{t('hero.titleAccent')}</span>
+            <span className="text-blue-600 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">{t('hero.titleAccent')}</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-xl text-slate-500 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }} className="text-xl text-slate-500 max-w-2xl mx-auto mb-16 font-semibold leading-relaxed">
             {t('hero.description')}
           </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex justify-center gap-4">
-            <a href="#pricing" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/25">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <button className="w-full sm:w-auto px-10 py-5 bg-blue-600 text-white rounded-[2rem] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/40 text-xs active:scale-95 group">
               {t('hero.ctaStart')}
-            </a>
-            <a href="#demo" className="px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
+              <ArrowRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="w-full sm:w-auto px-10 py-5 border-2 border-slate-900 rounded-[2rem] font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all text-xs active:scale-95">
               {t('hero.ctaGuide')}
-            </a>
+            </button>
           </motion.div>
         </section>
 
-        {/* App Demo or Image (Optional Full Width) */}
+        {/* Brand Focus: Company Intro */}
         <section className="max-w-6xl mx-auto px-8 pb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="aspect-video bg-slate-900 rounded-[2rem] shadow-2xl overflow-hidden border-8 border-slate-800 relative flex items-center justify-center group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent z-10" />
-
-            {/* 플레이스홀더: 실제 앱 UI 스크린샷으로 교체 예정 */}
-            <div className="text-center z-20">
-              <Sparkles className="w-16 h-16 text-blue-400 mx-auto mb-4 opacity-50 group-hover:scale-110 transition-transform duration-500" />
-              <p className="text-slate-400 font-medium">OnriviPrompt DualPanel Interface Preview</p>
-            </div>
-          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {keyValues.map((val, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all group"
+              >
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-blue-600 shadow-sm mb-8 group-hover:scale-110 transition-transform">
+                  {val.icon}
+                </div>
+                <h3 className="text-xl font-black mb-4 tracking-tight">{val.title}</h3>
+                <p className="text-slate-500 font-medium leading-relaxed text-sm">{val.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* AI Chat Demo with Markdown */}
@@ -226,68 +240,75 @@ export default function App() {
 
         {/* Pricing */}
         <section id="pricing" className="max-w-5xl mx-auto px-8 py-32">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">{t('pricing.title')}</h2>
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">{t('pricing.desc')}</p>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8">{t('pricing.title')}</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">{t('pricing.desc')}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free/Trial Plan */}
-            <div className="p-8 rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/50 flex flex-col hover:border-blue-200 transition-colors">
-              <h3 className="text-2xl font-bold mb-2">{t('pricing.free.name')}</h3>
-              <div className="mb-6">
-                <span className="text-5xl font-bold tracking-tighter">{t('pricing.free.price')}</span>
-                <span className="text-slate-500 ml-2 font-medium">/ {t('pricing.free.period')}</span>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {/* Free/Starter Plan */}
+            <div className="p-12 rounded-[3rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/50 flex flex-col hover:border-blue-200 transition-all hover:-translate-y-1">
+              <h3 className="text-2xl font-black mb-4">{t('pricing.free.name')}</h3>
+              <div className="mb-10">
+                <span className="text-6xl font-black tracking-tighter">{t('pricing.free.price')}</span>
+                <span className="text-slate-400 ml-3 font-bold text-lg">/ {t('pricing.free.period')}</span>
               </div>
-              <ul className="space-y-4 mb-8 flex-1">
+              <ul className="space-y-6 mb-12 flex-1">
                 {[t('pricing.free.f1'), t('pricing.free.f2'), t('pricing.free.f3')].map((item, idx) => (
-                  <li key={idx} className="flex flex-start gap-3 items-center text-slate-700">
-                    <UserCheck className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                  <li key={idx} className="flex flex-start gap-4 items-center text-slate-600 font-medium">
+                    <div className="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3.5 h-3.5 text-slate-400" />
+                    </div>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-4 rounded-xl font-bold bg-slate-100 text-slate-900 hover:bg-slate-200 transition-colors">
+              <button className="w-full py-5 rounded-2xl font-black bg-slate-900 text-white hover:bg-blue-600 transition-all uppercase tracking-widest text-xs shadow-lg shadow-slate-900/10">
                 {t('pricing.free.btn')}
               </button>
             </div>
 
-            {/* Pro Plan */}
-            <div className="p-8 rounded-[2rem] border-2 border-blue-600 bg-blue-600 text-white shadow-2xl shadow-blue-600/30 flex flex-col relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Target className="w-32 h-32" />
+            {/* Pro/Enterprise Plan */}
+            <div className="p-12 rounded-[3rem] border-2 border-blue-600 bg-blue-600 text-white shadow-2xl shadow-blue-600/30 flex flex-col relative overflow-hidden hover:-translate-y-1 transition-all">
+              <div className="absolute top-0 right-0 p-6 opacity-10">
+                <Zap className="w-40 h-40" />
               </div>
-              <h3 className="text-2xl font-bold mb-2 relative z-10">{t('pricing.pro.name')}</h3>
-              <div className="mb-6 relative z-10">
-                <span className="text-5xl font-bold tracking-tighter">{t('pricing.pro.price')}</span>
-                <span className="text-blue-200 ml-2 font-medium">/ {t('pricing.pro.period')}</span>
+              <div className="absolute top-6 right-8 bg-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/10 text-white">
+                Most Popular
               </div>
-              <ul className="space-y-4 mb-8 flex-1 relative z-10">
+              <h3 className="text-2xl font-black mb-4 relative z-10">{t('pricing.pro.name')}</h3>
+              <div className="mb-10 relative z-10">
+                <span className="text-6xl font-black tracking-tighter">{t('pricing.pro.price')}</span>
+                <span className="text-blue-200 ml-3 font-bold text-lg">/ {t('pricing.pro.period')}</span>
+              </div>
+              <ul className="space-y-6 mb-12 flex-1 relative z-10">
                 {[t('pricing.pro.f1'), t('pricing.pro.f2'), t('pricing.pro.f3'), t('pricing.pro.f4')].map((item, idx) => (
-                  <li key={idx} className="flex flex-start gap-3 items-center text-blue-50">
-                    <Heart className="w-5 h-5 text-blue-300 flex-shrink-0" />
+                  <li key={idx} className="flex flex-start gap-4 items-center text-blue-50 font-medium">
+                    <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 border border-white/20">
+                      <Zap className="w-3.5 h-3.5 text-blue-200" />
+                    </div>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-4 rounded-xl font-bold bg-white text-blue-600 hover:bg-blue-50 transition-colors relative z-10 shadow-lg">
+              <button className="w-full py-5 rounded-2xl font-black bg-white text-blue-600 hover:bg-blue-50 transition-all uppercase tracking-widest text-xs shadow-xl shadow-white/10 relative z-10">
                 {t('pricing.pro.btn')}
               </button>
             </div>
           </div>
         </section>
 
-        {/* Roadmap */}
-        <section id="roadmap" className="bg-slate-900 text-white py-32 overflow-hidden relative">
-          <div className="absolute inset-0 bg-blue-600/5 z-0" />
+        {/* Roadmap: Growth Plan */}
+        <section id="roadmap" className="bg-slate-950 text-white py-40 overflow-hidden relative">
+          <div className="absolute inset-0 bg-blue-600/10 z-0 opacity-50" />
           <div className="max-w-5xl mx-auto px-8 relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-center tracking-tighter mb-20">{t('roadmap.title')}</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-center tracking-tighter mb-24">{t('roadmap.title')}</h2>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-10">
               {[1, 2, 3].map((step) => (
-                <div key={step} className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors group">
-                  <div className="text-blue-400 font-black text-4xl mb-6 opacity-30 group-hover:opacity-100 transition-opacity">0{step}</div>
-                  <p className="text-lg font-bold leading-tight">{t(`roadmap.step${step}`)}</p>
+                <div key={step} className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all group hover:-translate-y-2">
+                  <div className="text-blue-500 font-black text-5xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity">0{step}</div>
+                  <p className="text-xl font-black leading-snug tracking-tight group-hover:text-blue-400 transition-colors">{t(`roadmap.step${step}`)}</p>
                 </div>
               ))}
             </div>
@@ -295,28 +316,28 @@ export default function App() {
         </section>
 
         {/* Closing */}
-        <section className="max-w-3xl mx-auto px-8 py-40 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-12">
+        <section className="max-w-3xl mx-auto px-8 py-48 text-center">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-16 leading-[1.1]">
             {t('closing.content')}
           </h2>
-          <a href="#demo" className="inline-block px-8 py-4 border-2 border-slate-900 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all">
-            {t('hero.ctaGuide')}
-          </a>
+          <button className="px-12 py-5 bg-blue-600 text-white rounded-[2rem] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/40 text-xs active:scale-95">
+            {t('hero.ctaStart')}
+          </button>
         </section>
 
         {/* Footer */}
-        <footer className="max-w-5xl mx-auto px-8 py-12 border-t border-slate-100 flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-400">
-          <div className="flex items-center gap-2">
-            <OnriviLogo className="w-5 h-5" />
-            <span>{t('company')}</span>
+        <footer className="max-w-6xl mx-auto px-8 py-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+          <div className="flex items-center gap-4">
+            <OnriviLogo className="w-6 h-6" />
+            <span className="text-slate-900">{t('company')}</span>
           </div>
-          <div className="flex gap-8">
-            <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">firstonrivi@onrivi.com</a>
+          <div className="flex flex-wrap justify-center gap-10">
+            <a href="mailto:firstonrivi@onrivi.com" className="hover:text-blue-600 transition-colors">Support</a>
             <Link to="/terms" className="hover:text-slate-900 transition-colors">{t('footer.terms')}</Link>
             <Link to="/privacy" className="hover:text-slate-900 transition-colors">{t('footer.privacy')}</Link>
-            <Link to="/refund" className="hover:text-slate-900 transition-colors">Refund & Support</Link>
+            <Link to="/refund" className="hover:text-slate-900 transition-colors">Billing & Refund</Link>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span>{t('footer.copy')}</span>
             <Link to="/admin" className="opacity-0 hover:opacity-10 pointer-events-auto cursor-default text-[8px] transition-opacity">admin</Link>
           </div>

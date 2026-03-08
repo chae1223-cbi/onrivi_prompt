@@ -16,12 +16,12 @@ const resources = {
         support: "Support",
       },
       hero: {
-        badge: "Smart Prompt Organizer",
-        title: "Stop Losing",
-        titleAccent: "Your Prompts",
-        description: "OnriviPrompt is a desktop app designed for non-developers. Manage your folders, chat with Google Gemini AI, and generate high-quality images all in one unified DualPanel interface.",
-        ctaStart: "Download Trial",
-        ctaGuide: "View Demo",
+        badge: "Global SaaS Launch",
+        title: "Scale Your",
+        titleAccent: "AI Productivity",
+        description: "Experience the next-generation SaaS Workbench. Manage your company vision, user profiles, and seamless payments all in one unified cloud platform.",
+        ctaStart: "Start SaaS Now",
+        ctaGuide: "Product Demo",
       },
       features: {
         title: "Key Features",
@@ -43,26 +43,26 @@ const resources = {
         }
       },
       pricing: {
-        title: "Simple Pricing",
-        desc: "Choose the plan that fits your workflow. One-time payment for lifetime access.",
+        title: "SaaS Plans",
+        desc: "Flexible plans for individuals and teams. Scale your business with Onrivi.",
         free: {
-          name: "Trial Version",
+          name: "Starter",
           price: "$0",
-          period: "14 Days",
-          f1: "Basic prompt management",
-          f2: "Local file import (.md, .txt)",
-          f3: "Limited AI interactions",
-          btn: "Download Free"
+          period: "Free Tier",
+          f1: "Essential company intro features",
+          f2: "User registration & profile",
+          f3: "Community support",
+          btn: "Join for Free"
         },
         pro: {
-          name: "Pro License",
-          price: "$29",
-          period: "Lifetime",
-          f1: "Unlimited folder & prompt management",
-          f2: "Unlimited Gemini AI Chat integration",
-          f3: "AI Image Generation & Save",
-          f4: "Priority support (firstonrivi@onrivi.com)",
-          btn: "Buy License"
+          name: "Enterprise Pro",
+          price: "$49",
+          period: "Monthly",
+          f1: "Full payment & billing management",
+          f2: "Direct product link access",
+          f3: "Advanced security & data isolation",
+          f4: "24/7 Priority support",
+          btn: "Manage Payments"
         }
       },
       roadmap: {
@@ -101,12 +101,12 @@ const resources = {
         support: "고객 지원",
       },
       hero: {
-        badge: "Smart Prompt Organizer",
-        title: "더 이상 당신의",
-        titleAccent: "프롬프트를",
-        description: "잃어버리지 마세요. OnriviPrompt는 비개발자 실무자를 위한 데스크톱 전용 앱입니다. 좌측에서 폴더를 관리하고 우측에서 구글 제미나이(Gemini)와 대화하며 이미지를 생성하는 혁신을 경험하세요.",
-        ctaStart: "체험판 다운로드",
-        ctaGuide: "데모 보기",
+        badge: "Global SaaS Launch",
+        title: "AI와 함께하는",
+        titleAccent: "비즈니스 혁신",
+        description: "Onrivi SaaS 워크벤치를 통해 효율성을 극대화하세요. 단순한 도구를 넘어 회사 소개, 회원가입, 결제 관리까지 통합된 클라우드 경험을 제공합니다.",
+        ctaStart: "SaaS 시작하기",
+        ctaGuide: "서비스 이동",
       },
       features: {
         title: "Key Features",
@@ -128,26 +128,26 @@ const resources = {
         }
       },
       pricing: {
-        title: "Simple Pricing",
-        desc: "불필요한 구독 없이, 단 한 번의 결제로 평생 소장하세요.",
+        title: "SaaS 요금 정책",
+        desc: "귀하의 비즈니스 규모에 맞는 최적의 플랜을 선택하세요.",
         free: {
-          name: "Trial Version (체험판)",
+          name: "Starter (무료)",
           price: "₩0",
-          period: "14일 무료",
-          f1: "기본 폴더 및 파일 관리",
-          f2: "외부 파일 한번에 가져오기 (.md, .txt)",
-          f3: "제한적 AI(Gemini) 대화 테스트",
-          btn: "무료로 다운로드"
+          period: "평생 무료",
+          f1: "기본 회사 소개 및 대시보드",
+          f2: "간편 회원가입 및 프로필 관리",
+          f3: "커뮤니티 지원 서비스",
+          btn: "지금 가입하기"
         },
         pro: {
-          name: "Pro License",
-          price: "₩39,000",
-          period: "평생 소장(Lifetime)",
-          f1: "무제한 폴더 생성 및 계층 관리",
-          f2: "무제한 Gemini AI 연동 및 자동 수정",
-          f3: "AI 고화질 이미지 생성 및 로컬 다운로드",
-          f4: "우선 고객 지원 (firstonrivi@onrivi.com)",
-          btn: "라이선스 구매하기"
+          name: "Enterprise Pro",
+          price: "₩59,000",
+          period: "월간 구독",
+          f1: "통합 결제 및 정산 관리 시스템",
+          f2: "상품 상세 및 서비스 즉시 이동",
+          f3: "강력한 데이터 보안 수준 보장",
+          f4: "전담 매니저 우선 지원",
+          btn: "결제 관리하기"
         }
       },
       roadmap: {
