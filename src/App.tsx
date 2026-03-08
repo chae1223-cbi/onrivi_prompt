@@ -178,11 +178,11 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
           <span className="text-sm font-bold tracking-tighter text-white uppercase">{t('company')}</span>
         </div>
 
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#overview" className="text-sm font-medium text-white/70 hover:text-white transition-colors">{t('nav.intro')}</a>
-          <a href="#mission" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Mission</a>
-          <a href="#products" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Products</a>
-          <a href="#pricing" className="text-sm font-medium text-white/70 hover:text-white transition-colors">{t('nav.pricing')}</a>
+        <div className="hidden md:flex items-center gap-6">
+          <a href="#overview" className="text-xs font-bold text-white/70 hover:text-white transition-colors">{t('nav.intro')}</a>
+          <a href="#mission" className="text-xs font-bold text-white/70 hover:text-white transition-colors">Mission</a>
+          <a href="#products" className="text-xs font-bold text-white/70 hover:text-white transition-colors">Products</a>
+          <a href="#pricing" className="text-xs font-bold text-white/70 hover:text-white transition-colors">{t('nav.pricing')}</a>
 
           <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
             <button onClick={() => toggleLanguage('ko')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'ko' ? 'bg-white text-black' : 'text-white/40 hover:text-white'}`}>KO</button>
@@ -258,21 +258,21 @@ const Hero = ({ onAuthClick }: { onAuthClick: () => void }) => {
           <span className="inline-block px-4 py-1.5 mb-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-widest uppercase">
             {t('hero.badge')}
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.1]">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-[1.2]">
             {t('hero.title')}<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
               {t('hero.titleAccent')}
             </span>
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-10 leading-relaxed">
+          <p className="max-w-xl mx-auto text-sm md:text-base text-white/60 mb-8 leading-relaxed">
             {t('hero.description')}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button onClick={onAuthClick} className="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-500 text-black font-bold text-lg hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 group">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button onClick={onAuthClick} className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 group">
               {t('hero.ctaStart')}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-all">
+            <button className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all">
               {t('hero.ctaGuide')}
             </button>
           </div>
@@ -296,7 +296,7 @@ const MissionVision = () => {
           >
             <div>
               <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-4">Our Mission</h2>
-              <p className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              <p className="text-xl md:text-2xl font-bold text-white leading-tight">
                 {t('hero.description').slice(0, 50)}...
               </p>
             </div>
@@ -347,9 +347,9 @@ const CoreValues = () => {
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">핵심 가치</h2>
-          <p className="text-white/60">온리비가 추구하는 세 가지 철학</p>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">핵심 가치</h2>
+          <p className="text-sm text-white/60">온리비가 추구하는 세 가지 철학</p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {values.map((v, i) => (
@@ -390,9 +390,9 @@ const Products = () => {
   return (
     <section id="products" className="py-24 bg-zinc-950">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">제품 및 서비스</h2>
-          <p className="text-white/60">당신의 아이디어를 체계적인 데이터로 관리하세요</p>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">제품 및 서비스</h2>
+          <p className="text-sm text-white/60">당신의 아이디어를 체계적인 데이터로 관리하세요</p>
         </div>
         <div className="space-y-8">
           {products.map((p, i) => (
