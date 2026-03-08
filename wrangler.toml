@@ -1,12 +1,8 @@
 #:schema https://raw.githubusercontent.com/cloudflare/wrangler/main/packages/wrangler/config-schema.json
 name = "onrivi-prompt"
-pages_build_output_dir = "dist"
 compatibility_date = "2024-03-08"
 
 [[d1_databases]]
-binding = "DB" # 코드 내에서 접근할 이름
-database_name = "onrivi_db" # D1에 설정하신 이름
-database_id = "7ec7a183-0e56-477f-8f91-3f7a6921ed48" # 제공해주신 ID 반영 완료! 
-
-[assets]
-directory = "dist"
+binding = "DB"
+database_name = "onrivi_db"
+database_id = "7ec7a183-0e56-477f-8f91-3f7a6921ed48"
