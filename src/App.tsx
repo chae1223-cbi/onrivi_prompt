@@ -337,36 +337,71 @@ const Hero = ({ onAuthClick }: { onAuthClick: () => void }) => {
 const MissionVision = () => {
   const { t } = useTranslation();
   return (
-    <section id="mission" className="py-24 bg-zinc-950">
+    <section id="mission" className="py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[50%] h-full bg-onrivi-yellow/[0.02] -z-10 blur-[120px]" />
+
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ duration: 0.8 }}
+            className="space-y-12"
           >
-            <div>
-              <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-4">Our Mission</h2>
-              <p className="text-xl md:text-2xl font-bold text-white leading-tight">
-                {t('hero.description').slice(0, 50)}...
-              </p>
+            <div className="relative">
+              <div className="absolute -left-6 top-0 w-1 h-12 bg-onrivi-yellow rounded-full" />
+              <h2 className="text-xs font-black text-onrivi-yellow uppercase tracking-[0.3em] mb-4">Our Core Story</h2>
+              <h3 className="text-3xl md:text-5xl font-black text-white leading-[1.1] tracking-tight">
+                단순한 코드가 아닌,<br />
+                당신의 <span className="text-onrivi-yellow italic">영감이 자산</span>이 되는 곳.
+              </h3>
             </div>
-            <div>
-              <h2 className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-4">Our Vision</h2>
-              <p className="text-xl text-white/70">
-                전 세계 모든 AI 사용자가 자신의 창의성을 가장 완벽하게 보관하고 활용할 수 있는 글로벌 No.1 프롬프트 관리 플랫폼 기업으로 도약합니다.
-              </p>
-            </div>
-          </motion.div>
-          <div className="relative aspect-square md:aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 opacity-50 group-hover:opacity-70 transition-opacity" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center border border-white/20">
-                <Rocket className="w-10 h-10 text-emerald-400" />
+
+            <div className="grid gap-8">
+              <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-onrivi-yellow/20 transition-all">
+                <h4 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">Our Mission</h4>
+                <p className="text-lg text-white/80 leading-relaxed font-medium">
+                  {t('hero.description')}
+                </p>
+              </div>
+              <div className="p-8 rounded-[2rem] bg-onrivi-yellow/[0.03] border border-onrivi-yellow/10 hover:border-onrivi-yellow/30 transition-all ml-4 md:ml-8 lg:ml-12">
+                <h4 className="text-xs font-black text-onrivi-yellow/50 uppercase tracking-widest mb-3">Our Vision</h4>
+                <p className="text-lg text-white/80 leading-relaxed font-medium">
+                  전 세계 모든 AI 사용자가 자신의 창의성을 가장 완벽하게 보관하고 활용할 수 있는 글로벌 No.1 프롬프트 관리 플랫폼 기업으로 도약합니다.
+                </p>
               </div>
             </div>
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="relative"
+          >
+            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 relative group">
+              <img
+                src="/brain/9a828d40-cf94-479a-9c43-a8bf425eec8a/onrivi_human_centric_tech_1772980512657.png"
+                alt="Human-Centric AI Vision"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-8 left-8 right-8 p-6 glass-premium rounded-2xl">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-onrivi-mint" />
+                  <span className="text-[10px] font-black text-white/50 uppercase tracking-widest">Human & AI Synergy</span>
+                </div>
+                <p className="text-sm font-bold text-white leading-snug">
+                  "기술은 수단일 뿐, 온리비는 당신의 다음 위대한 성취를 설계합니다."
+                </p>
+              </div>
+            </div>
+
+            {/* 비대칭 장식 요소 */}
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-onrivi-yellow/20 rounded-full blur-3xl" />
+          </motion.div>
         </div>
       </div>
     </section>
