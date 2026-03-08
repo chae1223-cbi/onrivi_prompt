@@ -16,7 +16,9 @@ import {
   Database,
   User,
   LogOut,
-  CreditCard
+  CreditCard,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -152,7 +154,7 @@ const PaymentModal = ({ isOpen, onClose, plan }: { isOpen: boolean; onClose: () 
   );
 };
 
-const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user: MockUser | null; onLogout: () => void }) => {
+const Navbar = ({ onAuthClick, user, onLogout, theme, toggleTheme }: { onAuthClick: () => void; user: MockUser | null; onLogout: () => void; theme: 'light' | 'dark', toggleTheme: () => void }) => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -168,50 +170,57 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10 py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2 group cursor-pointer">
+        <div className="flex items-center gap-3 group cursor-pointer">
           <div className="relative">
             <img src="/logo.png" alt={t('company')} className="w-6 h-6 object-contain rounded-md transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-emerald-500/5 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <span className="text-sm font-bold tracking-tighter text-white uppercase">{t('company')}</span>
+          <span className="text-sm font-bold tracking-tighter text-zinc-900 dark:text-white uppercase">{t('company')}</span>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          <a href="#overview" className="text-xs font-bold text-white/70 hover:text-white transition-colors">{t('nav.intro')}</a>
-          <a href="#mission" className="text-xs font-bold text-white/70 hover:text-white transition-colors">Mission</a>
-          <a href="#products" className="text-xs font-bold text-white/70 hover:text-white transition-colors">Products</a>
-          <a href="#pricing" className="text-xs font-bold text-white/70 hover:text-white transition-colors">{t('nav.pricing')}</a>
+          <a href="#overview" className="text-xs font-bold text-zinc-500 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white transition-colors">{t('nav.intro')}</a>
+          <a href="#mission" className="text-xs font-bold text-zinc-500 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white transition-colors">Mission</a>
+          <a href="#products" className="text-xs font-bold text-zinc-500 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white transition-colors">Products</a>
+          <a href="#pricing" className="text-xs font-bold text-zinc-500 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white transition-colors">{t('nav.pricing')}</a>
 
-          <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
-            <button onClick={() => toggleLanguage('ko')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'ko' ? 'bg-white text-black' : 'text-white/40 hover:text-white'}`}>KO</button>
-            <button onClick={() => toggleLanguage('en')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'en' ? 'bg-white text-black' : 'text-white/40 hover:text-white'}`}>EN</button>
+          <div className="flex items-center gap-2 bg-zinc-100 dark:bg-white/5 p-1 rounded-full border border-zinc-200 dark:border-white/10">
+            <button onClick={() => toggleLanguage('ko')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'ko' ? 'bg-white dark:bg-white text-black shadow-sm' : 'text-zinc-400 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white'}`}>KO</button>
+            <button onClick={() => toggleLanguage('en')} className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${i18n.language === 'en' ? 'bg-white dark:bg-white text-black shadow-sm' : 'text-zinc-400 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white'}`}>EN</button>
           </div>
+
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-500 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white transition-all"
+          >
+            {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+          </button>
 
           {user ? (
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10">
                 <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center overflow-hidden">
                   {user.photoURL ? <img src={user.photoURL} alt="" /> : <User className="w-4 h-4 text-black" />}
                 </div>
-                <span className="text-sm font-medium text-white/80">{user.displayName || 'User'}</span>
+                <span className="text-sm font-medium text-zinc-700 dark:text-white/80">{user.displayName || 'User'}</span>
               </div>
-              <button onClick={onLogout} className="p-2 rounded-full hover:bg-white/5 text-white/40 hover:text-white transition-all">
-                <LogOut className="w-5 h-5" />
+              <button onClick={onLogout} className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-400 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white transition-all">
+                <LogOut className="w-4 h-4" />
               </button>
             </div>
           ) : (
             <button
               onClick={onAuthClick}
-              className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold hover:bg-emerald-400 transition-colors shadow-sm"
+              className="px-3 py-1 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-[10px] font-bold hover:bg-emerald-500 dark:hover:bg-emerald-400 transition-colors shadow-sm"
             >
               Get Started
             </button>
           )}
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button className="md:hidden text-zinc-900 dark:text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
