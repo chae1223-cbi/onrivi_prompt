@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "deploy": "npm run build && npx wrangler pages deploy dist --project-name onrivi-prompt"
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name onrivi-landingpage"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
