@@ -28,9 +28,9 @@ export default function App() {
   ];
 
   const techFocus = [
-    { icon: <Cpu />, title: t('tech.f1.title'), desc: t('tech.f1.desc') },
-    { icon: <Workflow />, title: t('tech.f2.title'), desc: t('tech.f2.desc') },
-    { icon: <UserCheck />, title: t('tech.f3.title'), desc: t('tech.f3.desc') }
+    { icon: <Cpu />, title: t('services.s1.title'), desc: t('services.s1.desc') },
+    { icon: <Workflow />, title: t('services.s2.title'), desc: t('services.s2.desc') },
+    { icon: <UserCheck />, title: t('services.s3.title'), desc: t('services.s3.desc') }
   ];
 
   const toggleLanguage = (lng: string) => {
@@ -209,6 +209,24 @@ export default function App() {
                   </motion.div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" className="py-32 bg-white">
+          <div className="max-w-5xl mx-auto px-8">
+            <h2 className="text-3xl md:text-5xl font-black text-center tracking-tighter mb-20">Our Services</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {techFocus.map((svc, i) => (
+                <div key={i} className="p-8 rounded-[2rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-xl transition-all">
+                  <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20">
+                    {svc.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{svc.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed font-medium">{svc.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
