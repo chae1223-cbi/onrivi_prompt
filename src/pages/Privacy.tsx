@@ -13,15 +13,15 @@ export default function Privacy() {
                 <p className="text-slate-500 font-medium mb-12">Effective Date: February 27, 2026</p>
 
                 <div className="space-y-8 leading-relaxed">
-                    <p>Your privacy is important to onrivi ("we," "us," or "our"). This Privacy Policy describes how we collect, use, and handle your information when you use our website (www.onrivi.com) and our software products.</p>
+                    <p>Your privacy is important to onrivi ("we," "us," or "our"). This Privacy Policy describes how we collect, use, and handle your information when you use our website (www.onrivi.com) and our SaaS platform.</p>
 
                     <section>
                         <h2 className="text-2xl font-bold mb-4">1. Information We Collect</h2>
                         <p className="text-slate-600 mb-4">We only collect information necessary to provide and improve our services to you:</p>
                         <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                            <li><strong>Personal Information:</strong> When you make a purchase or contact our support team, we may collect your name, email address, and payment information.</li>
+                            <li><strong>Personal Information:</strong> When you subscribe or contact our support team, we may collect your name, email address, and billing information.</li>
                             <li><strong>Payment Processing Details:</strong> All actual payment processing is handled securely by our Merchant of Record. We do not store full credit card details on our servers.</li>
-                            <li><strong>Usage Data & License Validation:</strong> Our software may communicate with our servers to validate your license key. During this process, we may collect non-personally identifiable technical information (e.g., IP address, OS version) solely for anti-piracy verification.</li>
+                            <li><strong>Usage Data & Subscription Validation:</strong> Our platform communicates with our servers to verify your subscription status. During this process, we may collect non-personally identifiable technical information solely for service maintenance and authorization.</li>
                         </ul>
                     </section>
 
@@ -29,10 +29,10 @@ export default function Privacy() {
                         <h2 className="text-2xl font-bold mb-4">2. How We Use Your Information</h2>
                         <p className="text-slate-600 mb-4">We use the collected information for the following purposes:</p>
                         <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                            <li>To process your purchases and automatically deliver your software license keys.</li>
+                            <li>To process your subscriptions and automatically provision your service account.</li>
                             <li>To provide customer support and respond to your inquiries.</li>
-                            <li>To communicate updates, security alerts, and administrative messages.</li>
-                            <li>To prevent fraudulent transactions and unauthorized software usage.</li>
+                            <li>To communicate updates, security alerts, and service messages.</li>
+                            <li>To prevent fraudulent transactions and unauthorized service access.</li>
                         </ul>
                     </section>
 

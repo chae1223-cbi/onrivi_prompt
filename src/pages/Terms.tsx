@@ -13,7 +13,7 @@ export default function Terms() {
                 <p className="text-slate-500 font-medium mb-12">Last Updated: February 27, 2026</p>
 
                 <div className="space-y-8 leading-relaxed">
-                    <p>These Terms of Service ("Terms") govern your use of the software, website (www.onrivi.com), and services provided by onrivi ("we," "us," or "our"). By purchasing or using our software, you agree to be bound by these Terms.</p>
+                    <p>These Terms of Service ("Terms") govern your use of the SaaS platform, website (www.onrivi.com), and online services provided by onrivi ("we," "us," or "our"). By subscribing to or using our services, you agree to be bound by these Terms.</p>
 
                     <section>
                         <h2 className="text-2xl font-bold mb-4">1. Description of Service</h2>
@@ -21,11 +21,11 @@ export default function Terms() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-bold mb-4">2. License Grant and Restrictions</h2>
-                        <p className="text-slate-600 mb-4">Upon successful payment, onrivi grants you a non-exclusive, non-transferable, and revocable license to use the software corresponding to your purchased plan.</p>
+                        <h2 className="text-2xl font-bold mb-4">2. Subscription Grant and Restrictions</h2>
+                        <p className="text-slate-600 mb-4">Upon successful payment, onrivi grants you a non-exclusive, non-transferable, and revocable right to access the service corresponding to your subscribed plan.</p>
                         <ul className="list-disc pl-6 space-y-2 text-slate-600">
-                            <li><strong>Prohibited Conduct:</strong> You may not reverse engineer, decompile, crack, or share your license key with unauthorized users.</li>
-                            <li><strong>Verification:</strong> The software requires periodic online verification to validate the integrity of your license key via our secure servers.</li>
+                            <li><strong>Prohibited Conduct:</strong> You may not reverse engineer the platform, attempt unauthorized access, or share your account credentials with unauthorized users.</li>
+                            <li><strong>Verification:</strong> The service requires a stable internet connection and active subscription status to maintain access to your data.</li>
                         </ul>
                     </section>
 
@@ -40,7 +40,7 @@ export default function Terms() {
 
                     <section>
                         <h2 className="text-2xl font-bold mb-4">4. Refund Policy</h2>
-                        <p className="text-slate-600">We offer a 7-day money-back guarantee for initial purchases, provided the software has not been extensively utilized or abused. To request a refund, please contact us at firstonrivi@onrivi.com with your order details.</p>
+                        <p className="text-slate-600">We offer a 7-day money-back guarantee for initial subscriptions, provided the service has not been extensively utilized. To request a refund, please contact us at firstonrivi@onrivi.com with your subscription details.</p>
                     </section>
 
                     <section>
