@@ -246,86 +246,85 @@ const Navbar = ({ onAuthClick, user, onLogout }: { onAuthClick: () => void; user
 const Hero = ({ onAuthClick }: { onAuthClick: () => void }) => {
   const { t } = useTranslation();
   return (
-    <section id="overview" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-circuit">
+    <section id="overview" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-circuit selection:bg-onrivi-yellow/40">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-onrivi-yellow/[0.03] via-transparent to-onrivi-mint/[0.03] -z-10" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-onrivi-yellow/5 border border-onrivi-yellow/20 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-onrivi-yellow animate-pulse" />
-              <span className="text-onrivi-yellow text-[10px] font-black tracking-widest uppercase">
-                {t('hero.badge')}
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 mb-10 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl">
+              <span className="w-2.5 h-2.5 rounded-full bg-onrivi-yellow animate-pulse shadow-[0_0_12px_rgba(255,214,0,0.8)]" />
+              <span className="text-white text-[10px] font-black tracking-[0.2em] uppercase">
+                {t('hero.badge')} • Human-Centric
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-8 leading-[1.05]">
-              기술에 <span className="text-onrivi-yellow italic">인간의 숨결</span>을<br />
-              더하는 <span className="onrivi-gradient-text">하이테크 혁명.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-10 leading-[1] whitespace-pre-line">
+              꿈에 <span className="text-onrivi-yellow italic">온기</span>를,<br />
+              기술에 <span className="onrivi-gradient-text">생명</span>을.
             </h1>
 
-            <p className="max-w-xl text-lg text-white/60 mb-12 leading-relaxed font-medium border-l-2 border-onrivi-yellow/30 pl-6">
-              정적인 도구를 넘어, 당신의 창의성이 살아 움직이는 디지털 자산이 되는 공간. 온리비는 1인 기업가들의 가장 신뢰할 수 있는 지적 파트너입니다.
+            <p className="max-w-xl text-xl text-white/60 mb-12 leading-relaxed font-medium border-l-4 border-onrivi-yellow/40 pl-8">
+              데이터의 차가움을 넘어 당신의 이야기가 흐르는 공간.<br />
+              온리비는 AI 시대를 살아가는 당신의 가장 따뜻한 지적 자산 파트너입니다.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <button
-                onClick={onAuthClick}
-                className="group relative w-full sm:w-auto px-10 py-4 overflow-hidden rounded-2xl bg-onrivi-yellow text-black font-black text-sm transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-onrivi-yellow/20"
+            <div className="flex flex-col sm:flex-row items-center gap-5">
+              <a
+                href="https://prompt.onrivi.com"
+                className="group relative w-full sm:w-auto px-12 py-5 overflow-hidden rounded-3xl bg-onrivi-yellow text-black font-black text-base transition-all hover:scale-105 active:scale-95 shadow-[0_20px_40px_-10px_rgba(255,214,0,0.3)] flex items-center justify-center gap-3"
               >
-                <div className="relative z-10 flex items-center justify-center gap-2">
-                  {t('hero.ctaStart')}
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </div>
-              </button>
-              <button className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                {t('hero.ctaStart')}
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+              </a>
+              <button className="w-full sm:w-auto px-10 py-5 rounded-3xl bg-white/[0.03] border border-white/10 text-white font-bold text-base hover:bg-white/10 transition-all">
                 Brand Story
               </button>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            initial={{ opacity: 0, scale: 0.8, rotate: -3 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
             className="relative hidden lg:block"
           >
-            <div className="relative z-10 floating-element p-8 rounded-[3rem] glass-premium">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-onrivi-yellow/20 blur-[80px] -z-10" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-onrivi-mint/20 blur-[80px] -z-10" />
+            <div className="relative z-10 floating-element p-10 rounded-[4rem] glass-premium border-onrivi-yellow/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-onrivi-yellow/10 to-transparent blur-[120px] -z-10" />
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-onrivi-yellow flex items-center justify-center shadow-lg shadow-onrivi-yellow/20">
-                    <Rocket className="text-black w-6 h-6" />
+              <div className="space-y-8">
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 rounded-3xl bg-onrivi-yellow flex items-center justify-center shadow-2xl shadow-onrivi-yellow/40 rotate-3">
+                    <Rocket className="text-black w-7 h-7" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black text-white/30 uppercase tracking-widest">Growth Engine</div>
-                    <div className="text-xl font-bold text-white tracking-tight">Onrivi Intelligence</div>
+                    <div className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-1">Empowering Humanity</div>
+                    <div className="text-2xl font-black text-white tracking-tight italic">Beyond Intelligence</div>
                   </div>
                 </div>
-                <div className="h-px bg-white/10 w-full" />
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="text-[9px] font-bold text-onrivi-mint uppercase mb-1">Efficiency</div>
-                    <div className="text-2xl font-black text-white">+142%</div>
+                <div className="h-px bg-gradient-to-r from-onrivi-yellow/30 via-white/10 to-transparent w-full" />
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="p-6 rounded-3xl bg-white/[0.03] border border-white/5 backdrop-blur-md">
+                    <div className="text-[10px] font-black text-onrivi-mint uppercase mb-2 tracking-widest text-center">Stability</div>
+                    <div className="text-3xl font-black text-white text-center">99.9%</div>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="text-[9px] font-bold text-onrivi-yellow uppercase mb-1">Safety</div>
-                    <div className="text-2xl font-black text-white">99.9%</div>
+                  <div className="p-6 rounded-3xl bg-white/[0.03] border border-white/5 backdrop-blur-md">
+                    <div className="text-[10px] font-black text-onrivi-yellow uppercase mb-2 tracking-widest text-center">Speed</div>
+                    <div className="text-3xl font-black text-white text-center">0.02s</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 비정형 장식 요소 */}
-            <div className="absolute -top-12 -left-12 p-6 rounded-3xl glass-warm floating-element [animation-delay:2s]">
-              <Zap className="text-onrivi-yellow w-8 h-8" />
+            <div className="absolute -top-16 -left-16 p-8 rounded-[2.5rem] glass-warm floating-element [animation-delay:2s] border-onrivi-yellow/30">
+              <Zap className="text-onrivi-yellow w-10 h-10 fill-onrivi-yellow/20" />
             </div>
-            <div className="absolute -bottom-8 right-12 p-4 rounded-2xl glass-premium floating-element [animation-delay:4s]">
-              <div className="w-3 h-3 rounded-full bg-onrivi-mint" />
+            <div className="absolute -bottom-12 right-16 p-6 rounded-full glass-premium floating-element [animation-delay:4s] border-onrivi-mint/30 shadow-[0_0_40px_rgba(0,245,160,0.2)]">
+              <div className="w-4 h-4 rounded-full bg-onrivi-mint shadow-lg shadow-onrivi-mint" />
             </div>
           </motion.div>
         </div>
@@ -337,70 +336,86 @@ const Hero = ({ onAuthClick }: { onAuthClick: () => void }) => {
 const MissionVision = () => {
   const { t } = useTranslation();
   return (
-    <section id="mission" className="py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-onrivi-yellow/[0.02] -z-10 blur-[120px]" />
+    <section id="mission" className="py-24 md:py-40 relative bg-warm-cream-canvas">
+      <div className="absolute left-0 top-0 w-[40%] h-full bg-onrivi-yellow/[0.03] pointer-events-none blur-[150px]" />
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-16 items-center">
+        <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-24 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-12"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative"
           >
-            <div className="relative">
-              <div className="absolute -left-6 top-0 w-1 h-12 bg-onrivi-yellow rounded-full" />
-              <h2 className="text-xs font-black text-onrivi-yellow uppercase tracking-[0.3em] mb-4">Our Core Story</h2>
-              <h3 className="text-3xl md:text-5xl font-black text-white leading-[1.1] tracking-tight">
-                단순한 코드가 아닌,<br />
-                당신의 <span className="text-onrivi-yellow italic">영감이 자산</span>이 되는 곳.
-              </h3>
-            </div>
-
-            <div className="grid gap-8">
-              <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-onrivi-yellow/20 transition-all">
-                <h4 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">Our Mission</h4>
-                <p className="text-lg text-white/80 leading-relaxed font-medium">
-                  {t('hero.description')}
-                </p>
-              </div>
-              <div className="p-8 rounded-[2rem] bg-onrivi-yellow/[0.03] border border-onrivi-yellow/10 hover:border-onrivi-yellow/30 transition-all ml-4 md:ml-8 lg:ml-12">
-                <h4 className="text-xs font-black text-onrivi-yellow/50 uppercase tracking-widest mb-3">Our Vision</h4>
-                <p className="text-lg text-white/80 leading-relaxed font-medium">
-                  전 세계 모든 AI 사용자가 자신의 창의성을 가장 완벽하게 보관하고 활용할 수 있는 글로벌 No.1 프롬프트 관리 플랫폼 기업으로 도약합니다.
+            <div className="aspect-[4/5] md:aspect-[3/4] rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] relative group">
+              <img
+                src="/brain/9a828d40-cf94-479a-9c43-a8bf425eec8a/onrivi_warm_human_story_1772982074973.png"
+                alt="Human-Centric Tech Atmosphere"
+                className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 via-zinc-900/20 to-transparent" />
+              <div className="absolute bottom-10 left-10 p-8 glass-warm-intensive rounded-[2.5rem] max-w-[80%] border-white/40">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-3 h-3 rounded-full bg-onrivi-yellow shadow-[0_0_10px_rgba(255,214,0,0.8)]" />
+                  <span className="text-[11px] font-black text-zinc-600 uppercase tracking-[0.25em]">Human Connection</span>
+                </div>
+                <p className="text-xl font-bold text-zinc-900 leading-snug">
+                  "기술이 머무는 곳에 당신의 일상이 더 빛나도록."
                 </p>
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 30 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative"
+            transition={{ duration: 1, delay: 0.3 }}
+            className="space-y-12"
           >
-            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 relative group">
-              <img
-                src="/brain/9a828d40-cf94-479a-9c43-a8bf425eec8a/onrivi_human_centric_tech_1772980512657.png"
-                alt="Human-Centric AI Vision"
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-8 left-8 right-8 p-6 glass-premium rounded-2xl">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-onrivi-mint" />
-                  <span className="text-[10px] font-black text-white/50 uppercase tracking-widest">Human & AI Synergy</span>
-                </div>
-                <p className="text-sm font-bold text-white leading-snug">
-                  "기술은 수단일 뿐, 온리비는 당신의 다음 위대한 성취를 설계합니다."
-                </p>
-              </div>
+            <div className="relative">
+              <span className="text-[11px] font-black text-onrivi-yellow/80 uppercase tracking-[0.4em] mb-4 block">The Warmth of Tech</span>
+              <h2 className="text-4xl md:text-6xl font-black text-zinc-950 leading-[1.1] tracking-tight">
+                기능을 넘어,<br />
+                당신을 <span className="text-onrivi-yellow shadow-onrivi-yellow/10">이해하는</span> AI.
+              </h2>
             </div>
 
-            {/* 비대칭 장식 요소 */}
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-onrivi-yellow/20 rounded-full blur-3xl" />
+            <div className="space-y-10">
+              <div className="flex gap-6 group">
+                <div className="w-14 h-14 shrink-0 rounded-2xl bg-zinc-100 flex items-center justify-center group-hover:bg-onrivi-yellow/10 transition-colors border border-zinc-200">
+                  <User className="text-zinc-400 group-hover:text-onrivi-yellow w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-zinc-900 mb-2">당신을 위한 편안한 질감</h4>
+                  <p className="text-zinc-500 leading-relaxed font-medium">
+                    눈이 편안한 색감과 부드러운 레이아웃은 당신의 창의적인 흐름을 방해하지 않습니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 group">
+                <div className="w-14 h-14 shrink-0 rounded-2xl bg-zinc-100 flex items-center justify-center group-hover:bg-onrivi-yellow/10 transition-colors border border-zinc-200">
+                  <BookOpen className="text-zinc-400 group-hover:text-onrivi-yellow w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-zinc-900 mb-2">지적 동반자로서의 이야기</h4>
+                  <p className="text-zinc-500 leading-relaxed font-medium">
+                    데이터의 나열이 아닌, 당신의 성장을 돕는 친절한 가이드를 제공합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <button className="flex items-center gap-4 text-zinc-900 font-black text-sm uppercase group tracking-widest leading-none">
+                  Learn about our philosophy
+                  <div className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white transition-all">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </button>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -468,9 +483,9 @@ const Products = () => {
     {
       name: t('services.s1.title'),
       desc: t('services.s1.desc'),
-      features: ["계층 구조 탐색기", "동적 변수 ({{...}})", "데스크톱 & 클라우드 연동"],
+      features: ["지능형 계층 구조 관리", "동적 변수 시스템 ({{...}})", "실시간 멀티 디바이스 동기화"],
       icon: <Cpu className="w-8 h-8 text-emerald-400" />,
-      type: "주력 상품"
+      type: "SaaS Platform"
     }
   ];
 
@@ -514,9 +529,12 @@ const Products = () => {
                   ))}
                 </div>
               </div>
-              <button className="w-full md:w-auto px-7 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm font-black hover:bg-white hover:text-black transition-all shrink-0">
+              <a
+                href="https://prompt.onrivi.com"
+                className="w-full md:w-auto px-7 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm font-black hover:bg-white hover:text-black transition-all shrink-0 flex items-center justify-center"
+              >
                 자세히 보기
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -530,24 +548,24 @@ const Pricing = ({ onSelectPlan }: { onSelectPlan: (plan: any) => void }) => {
     {
       name: "Starter",
       price: "0",
-      desc: "개인 창작자를 위한 시작 플랜",
-      features: ["기본 프롬프트 관리", "로컬 저장소 지원", "커뮤니티 가이드"],
+      desc: "개인 창작자를 위한 무료 시작 플랜",
+      features: ["무제한 프롬프트 저장", "웹 대시보드 제공", "커뮤니티 가이드"],
       cta: "무료로 시작하기",
       highlight: false
     },
     {
       name: "Pro",
       price: "29,000",
-      desc: "전문적인 AI 자산 관리를 위한 플랜",
-      features: ["무제한 계층 구조", "클라우드 동기화", "동적 변수 시스템", "우선 지원"],
+      desc: "전문적인 AI 자산 관리를 위한 올인원 SaaS",
+      features: ["초고속 클라우드 동기화", "팀 협업 도구 지원", "고급 동적 변수 시스템", "우선 기술 지원"],
       cta: "지금 구독하기",
       highlight: true
     },
     {
       name: "Enterprise",
       price: "별도 문의",
-      desc: "기업용 보안 및 커스텀 솔루션",
-      features: ["커스텀 AI 프록시", "사용자 격리 설계", "전담 매니저 지원", "SLA 보장"],
+      desc: "기업용 보안 및 커스텀 클라우드 솔루션",
+      features: ["전용 클라우드 인프라", "SSO 및 보안 정책 적용", "1:1 전담 매니저", "99.9% SLA 보장"],
       cta: "문의하기",
       highlight: false
     }
@@ -581,7 +599,7 @@ const Pricing = ({ onSelectPlan }: { onSelectPlan: (plan: any) => void }) => {
                 ))}
               </ul>
               <button
-                onClick={() => onSelectPlan(p)}
+                onClick={() => window.location.href = "https://prompt.onrivi.com"}
                 className={`w-full py-4 rounded-2xl font-bold transition-all ${p.highlight ? 'bg-black text-white hover:bg-zinc-800' : 'bg-white text-black hover:bg-emerald-400'}`}
               >
                 {p.cta}

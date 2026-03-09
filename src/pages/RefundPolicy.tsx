@@ -26,8 +26,8 @@ export default function RefundPolicy() {
                     </h1>
                     <p className="text-slate-500 font-medium text-lg leading-relaxed">
                         {isKo
-                            ? "본 문서는 Paddle, FastSpring, Lemon Squeezy와 같은 MoR(Merchant of Record) 플랫폼을 통해 글로벌 시장에 소프트웨어를 공급하는 개발자를 위한 전문 법적 정책 가이드라인입니다."
-                            : "This document provides professional legal guidelines for individual developers supplying software to global markets via Merchant of Record (MoR) platforms such as Paddle, FastSpring, and Lemon Squeezy."}
+                            ? "본 문서는 Paddle, FastSpring, Lemon Squeezy와 같은 MoR(Merchant of Record) 플랫폼을 통해 글로벌 시장에 구독형 SaaS 서비스를 공급하는 개발자를 위한 전문 법적 정책 가이드라인입니다."
+                            : "This document provides professional legal guidelines for individual developers supplying subscription SaaS services to global markets via Merchant of Record (MoR) platforms such as Paddle, FastSpring, and Lemon Squeezy."}
                     </p>
                 </div>
 
@@ -45,8 +45,8 @@ export default function RefundPolicy() {
                         <div className="bg-slate-50 p-6 rounded-2xl space-y-4 text-sm md:text-base border border-slate-100">
                             <p>
                                 {isKo
-                                    ? "본 서비스의 모든 결제 및 라이선스 배포는 공식 판매 대행사인 MoR 플랫폼을 통해 법적으로 완결됩니다."
-                                    : "All payments and license distributions for this service are legally finalized through the official Merchant of Record (MoR) platform."}
+                                    ? "본 서비스의 모든 구독 결제 및 계정 활성화는 공식 판매 대행사인 MoR 플랫폼을 통해 법적으로 완결됩니다."
+                                    : "All subscription payments and account activations for this service are legally finalized through the official Merchant of Record (MoR) platform."}
                             </p>
                             <ul className="list-disc pl-6 space-y-3">
                                 <li>
@@ -96,8 +96,8 @@ export default function RefundPolicy() {
                                     {isKo ? "2.2 환불 불가 사유 (오남용 방지)" : "2.2 Non-Refundable Reasons (Abuse Prevention)"}
                                 </h3>
                                 <ul className="list-disc pl-6 space-y-2 text-sm md:text-base text-slate-600 font-medium">
-                                    <li><strong>{isKo ? "라이선스 활성화 완료:" : "License Activated:"}</strong> {isKo ? "제품 인증을 마친 경우 디지털 콘텐츠 특성상 환불이 불가합니다." : "Activated licenses are non-refundable due to the nature of digital content."}</li>
-                                    <li>{isKo ? "단순 변심, 미숙지, 시스템 요구사항 미확인으로 인한 구동 불가 등." : "Change of mind, misunderstanding of features, or failure to meet system requirements."}</li>
+                                    <li><strong>{isKo ? "서비스 계정 활성화 완료:" : "Subscription Service Activated:"}</strong> {isKo ? "플랫폼에 가입하여 첫 기능을 실행한 경우 SaaS 서비스 특성상 환불이 불가합니다." : "Activated subscriptions are non-refundable due to the nature of cloud-based digital services."}</li>
+                                    <li>{isKo ? "단순 변심, 미숙지, 온라인 환경 미비로 인한 서비스 접속 불가 등." : "Change of mind, misunderstanding of features, or failure to access due to user-side internet environments."}</li>
                                 </ul>
                             </div>
                             <div className="p-6 bg-amber-50 rounded-2xl border border-amber-100">
